@@ -72,8 +72,13 @@ struct RootView: View {
                 let rx = rank(x), ry = rank(y)
                 if rx != ry { return rx < ry }
             }
-            return x.name.lowercased() < y.name.lowercased()
+            return sortKey(x) < sortKey(y)
         }
+    }
+
+    /// Clé de tri par nom ; les applis liées (iCONIQ et MiCONE) restent côte à côte.
+    private func sortKey(_ a: CatalogApp) -> String {
+        a.id == "MiCONE" ? "iconiq~" : a.name.lowercased()
     }
 
     private func rank(_ a: CatalogApp) -> Int {

@@ -1,5 +1,5 @@
 {
- "version": 1795122050,
+ "version": 1795122510,
  "teamID": "35KLMK53PN",
  "owner": "starbudweiser",
  "apps": [
@@ -105,10 +105,10 @@
    "bundleId": "com.stephan.mclean",
    "category": "system",
    "desc": {
-    "fr": "Affiche la mémoire du Mac dans la barre des menus et la libère en un clic.",
-    "en": "Shows your Mac's memory in the menu bar and frees it in one click.",
-    "es": "Muestra la memoria del Mac en la barra de menús y la libera con un clic.",
-    "it": "Mostra la memoria del Mac nella barra dei menu e la libera con un clic."
+    "fr": "Mémoire du Mac dans la barre des menus, nettoyage en un clic ou automatique. Garde-fou anti-saturation : apps gourmandes ralenties, calculs IA et rendus lourds mis en pause quand la mémoire s'épuise, puis relancés.",
+    "en": "Your Mac's memory in the menu bar, cleaned in one click or automatically. Anti-overload safeguard: alerts under pressure, greedy apps slowed down, and heavy AI or render jobs paused automatically when memory runs out, then resumed.",
+    "es": "La memoria del Mac en la barra de menús, liberada con un clic o automáticamente. Salvaguarda anti-saturación: avisos bajo presión, apps voraces ralentizadas y cálculos de IA o renders pesados puestos en pausa automáticamente cuando se agota la memoria, y luego reanudados.",
+    "it": "La memoria del Mac nella barra dei menu, liberata con un clic o in automatico. Protezione anti-saturazione: avvisi sotto pressione, app voraci rallentate e calcoli IA o render pesanti messi in pausa automaticamente quando la memoria finisce, poi ripresi."
    },
    "repo": "mCLEAN"
   },

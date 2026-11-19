@@ -17,42 +17,6 @@
    "repo": "ARCHiVES"
   },
   {
-   "id": "CAREERDeSK",
-   "name": "CAREERDeSK",
-   "bundleId": "com.starbudweiser.careerdesk",
-   "category": "life",
-   "desc": {
-    "fr": "Pilote tes candidatures : collecte d'offres, enrichissement des sociétés, rédaction assistée par IA (lettres, messages) et suivi en pipeline. Moteur local, données sur ton Mac.",
-    "en": "Runs your job search: listing collection, company enrichment, AI-assisted writing (letters, messages) and pipeline tracking. Local engine, data stays on your Mac.",
-    "es": "Gestiona tus candidaturas: recopila ofertas, enriquece empresas, redacción asistida por IA (cartas, mensajes) y seguimiento en pipeline. Motor local, datos en tu Mac.",
-    "it": "Gestisce le tue candidature: raccolta offerte, arricchimento aziende, scrittura assistita dall'IA (lettere, messaggi) e monitoraggio in pipeline. Motore locale, dati sul tuo Mac."
-   }
-  },
-  {
-   "id": "HORIZONs",
-   "name": "HORIZONs",
-   "bundleId": "com.starbudweiser.horizons",
-   "category": "life",
-   "desc": {
-    "fr": "Cherche ton logement en location : annonces récupérées des alertes mail et des sites, triées selon tes critères avec la raison, dossier PDF filigrané et messages rédigés avec l'IA de ton choix.",
-    "en": "Finds your rental home: listings gathered from alert e-mails and websites, sorted by your criteria with the reason, a watermarked PDF application file and messages drafted with the AI of your choice.",
-    "es": "Busca tu alquiler: anuncios de alertas por correo y webs, clasificados según tus criterios con el motivo, dossier PDF con marca de agua y mensajes redactados con la IA que elijas.",
-    "it": "Cerca la tua casa in affitto: annunci da e-mail di avviso e siti, ordinati secondo i tuoi criteri con il motivo, dossier PDF con filigrana e messaggi scritti con l'IA che preferisci."
-   }
-  },
-  {
-   "id": "MAiLS",
-   "name": "MAiLS",
-   "bundleId": "fr.stephan.mails",
-   "category": "comms",
-   "desc": {
-    "fr": "Client mail natif, simple, lisible et léger. Lecture seule : il ne modifie jamais ton courrier (IMAP en consultation uniquement).",
-    "en": "A native mail client: simple, readable and light. Read-only: it never changes your mail (IMAP examine only).",
-    "es": "Cliente de correo nativo, simple, legible y ligero. Solo lectura: nunca modifica tu correo (IMAP solo en consulta).",
-    "it": "Client di posta nativo, semplice, leggibile e leggero. Sola lettura: non modifica mai la tua posta (IMAP solo in consultazione)."
-   }
-  },
-  {
    "id": "MiCONE",
    "name": "MiCONE",
    "bundleId": "fr.stephan.micone",
@@ -64,18 +28,6 @@
     "it": "Trasforma qualsiasi immagine in un'icona macOS (.icns) sullo sfondo scuro delle icone recenti, crea icone di cartella in stile Finder e può generare un'icona con un'IA (Pollinations, Hugging Face, Gemini, OpenAI)."
    },
    "repo": "MiCONE"
-  },
-  {
-   "id": "SOCiALS",
-   "name": "SOCiALS",
-   "bundleId": "fr.stephan.socials",
-   "category": "comms",
-   "desc": {
-    "fr": "Toutes tes messageries et réseaux sociaux (WhatsApp, Telegram, Instagram, Slack, Gmail…) dans une seule fenêtre native : une session isolée par compte, donc plusieurs comptes d'un même service.",
-    "en": "All your messaging apps and social networks (WhatsApp, Telegram, Instagram, Slack, Gmail…) in one native window: one isolated session per account, so several accounts of one service.",
-    "es": "Todas tus mensajerías y redes sociales (WhatsApp, Telegram, Instagram, Slack, Gmail…) en una sola ventana nativa: una sesión aislada por cuenta, y varias cuentas de un mismo servicio.",
-    "it": "Tutte le tue app di messaggistica e i social (WhatsApp, Telegram, Instagram, Slack, Gmail…) in una sola finestra nativa: una sessione isolata per account, quindi più account dello stesso servizio."
-   }
   },
   {
    "id": "TESSERaCT",
@@ -185,18 +137,6 @@
     "it": "Memorizza e ripristina la posizione di icone e finestre in base agli schermi collegati."
    },
    "repo": "mDESK"
-  },
-  {
-   "id": "mFRAMES",
-   "name": "mFRAMES",
-   "bundleId": "fr.stephan.mframes",
-   "category": "creative",
-   "desc": {
-    "fr": "Revue et annotation en direct entre prestataire et client (vidéo, photos, PDF, maquettes), en connexion directe chiffrée de bout en bout. Le client n'a rien à installer : un lien suffit.",
-    "en": "Live review and annotation between provider and client (video, photos, PDF, mockups) over an end-to-end encrypted direct connection. The client installs nothing: a link is enough.",
-    "es": "Revisión y anotación en directo entre proveedor y cliente (vídeo, fotos, PDF, maquetas) con conexión directa cifrada de extremo a extremo. El cliente no instala nada: basta un enlace.",
-    "it": "Revisione e annotazione dal vivo tra fornitore e cliente (video, foto, PDF, mockup) con connessione diretta cifrata end-to-end. Il cliente non installa nulla: basta un link."
-   }
   },
   {
    "id": "mLINKS",

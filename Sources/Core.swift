@@ -21,7 +21,7 @@ struct Catalog: Codable {
     let owner: String
     let apps: [CatalogApp]
 
-    static let categories = ["system", "files", "creative", "comms", "ai", "life", "virt"]
+    static let categories = ["system", "files", "creative", "comms", "ai", "virt"]
 
     /// Catalogue embarqué dans l'appli (mis à jour avec mHUB).
     static func load() -> Catalog {

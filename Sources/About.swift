@@ -16,7 +16,7 @@ enum About {
     private static func label(_ text: String, size: CGFloat = 12, bold: Bool = false, secondary: Bool = false) -> NSTextField {
         let f = NSTextField(wrappingLabelWithString: text)
         f.font = bold ? NSFont.boldSystemFont(ofSize: size) : NSFont.systemFont(ofSize: size)
-        f.textColor = secondary ? .secondaryLabelColor : .labelColor
+        f.textColor = secondary ? T.text2NS : T.textNS
         f.alignment = .center
         f.preferredMaxLayoutWidth = textWidth
         f.isSelectable = false
@@ -28,7 +28,7 @@ enum About {
     /// Nom de l'appli avec son « m » dans la couleur du logo.
     private static func nameLabel() -> NSTextField {
         let f = label("mHUB", size: 17, bold: true)
-        let s = NSMutableAttributedString(string: "mHUB", attributes: [.font: NSFont.boldSystemFont(ofSize: 17), .foregroundColor: NSColor.labelColor])
+        let s = NSMutableAttributedString(string: "mHUB", attributes: [.font: NSFont.boldSystemFont(ofSize: 17), .foregroundColor: T.textNS])
         s.addAttribute(.foregroundColor, value: T.brandNS, range: NSRange(location: 0, length: 1))
         f.attributedStringValue = s
         f.alignment = .center
@@ -61,12 +61,17 @@ enum About {
         stack.setCustomSpacing(6, after: views[1])
         stack.setCustomSpacing(4, after: views[2])
         stack.setCustomSpacing(18, after: views[3])
-        stack.edgeInsets = NSEdgeInsets(top: 28, left: sideMargin, bottom: 28, right: sideMargin)
+        stack.edgeInsets = NSEdgeInsets(top: 40, left: sideMargin, bottom: 28, right: sideMargin)
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.widthAnchor.constraint(equalToConstant: textWidth + 2 * sideMargin).isActive = true
-        let w = NSWindow(contentRect: .zero, styleMask: [.titled, .closable], backing: .buffered, defer: false)
+        let w = NSWindow(contentRect: .zero, styleMask: [.titled, .closable, .fullSizeContentView], backing: .buffered, defer: false)
         w.title = L.t("about.menu")
         w.isReleasedWhenClosed = false
+        w.titlebarAppearsTransparent = true
+        w.titleVisibility = .hidden
+        w.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        w.standardWindowButton(.zoomButton)?.isHidden = true
+        w.backgroundColor = T.bgNS
         let content = NSView()
         content.addSubview(stack)
         NSLayoutConstraint.activate([

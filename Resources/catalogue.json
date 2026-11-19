@@ -1,0 +1,405 @@
+{
+ "version": 1,
+ "teamID": "35KLMK53PN",
+ "owner": "starbudweiser",
+ "apps": [
+  {
+   "id": "ARCHiVES",
+   "name": "ARCHiVES",
+   "bundleId": "fr.stephan.archives",
+   "category": "files",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   },
+   "repo": "ARCHiVES"
+  },
+  {
+   "id": "CAREERDeSK",
+   "name": "CAREERDeSK",
+   "bundleId": "com.starbudweiser.careerdesk",
+   "category": "comms",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   }
+  },
+  {
+   "id": "HORIZONs",
+   "name": "HORIZONs",
+   "bundleId": "com.starbudweiser.horizons",
+   "category": "comms",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   }
+  },
+  {
+   "id": "MAiLS",
+   "name": "MAiLS",
+   "bundleId": "fr.stephan.mails",
+   "category": "comms",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   }
+  },
+  {
+   "id": "MiCONE",
+   "name": "MiCONE",
+   "bundleId": "fr.stephan.micone",
+   "category": "creative",
+   "desc": {
+    "fr": "Transforme n'importe quelle image en icône macOS (.icns).",
+    "en": "Turns any image into a macOS icon (.icns).",
+    "es": "Convierte cualquier imagen en un icono de macOS (.icns).",
+    "it": "Trasforma qualsiasi immagine in un'icona macOS (.icns)."
+   },
+   "repo": "MiCONE"
+  },
+  {
+   "id": "SOCiALS",
+   "name": "SOCiALS",
+   "bundleId": "fr.stephan.socials",
+   "category": "comms",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   }
+  },
+  {
+   "id": "TESSERaCT",
+   "name": "TESSERaCT",
+   "bundleId": "fr.stephan.tesseract",
+   "category": "system",
+   "desc": {
+    "fr": "Découvre et récupère des images de systèmes ARM64 (BSD, Linux…).",
+    "en": "Discover and fetch ARM64 system images (BSD, Linux…).",
+    "es": "Descubre y descarga imágenes de sistemas ARM64 (BSD, Linux…).",
+    "it": "Scopri e scarica immagini di sistemi ARM64 (BSD, Linux…)."
+   }
+  },
+  {
+   "id": "hdCLEANER",
+   "name": "hdCLEANER",
+   "bundleId": "com.stephan.hdcleaner",
+   "category": "system",
+   "desc": {
+    "fr": "Nettoyeur de disque : déchets, nettoyage système, désinstalleur d'applis, fichiers cachés.",
+    "en": "Disk cleaner: junk, system cleanup, app uninstaller, hidden files.",
+    "es": "Limpiador de disco: basura, limpieza del sistema, desinstalador de apps, archivos ocultos.",
+    "it": "Pulitore del disco: rifiuti, pulizia del sistema, disinstallatore di app, file nascosti."
+   },
+   "repo": "hdCLEANER"
+  },
+  {
+   "id": "iCONIQ",
+   "name": "iCONIQ",
+   "bundleId": "fr.stephan.iconiq",
+   "category": "creative",
+   "desc": {
+    "fr": "Bibliothèque d'icônes : fabrique et range les icônes d'applis et de dossiers.",
+    "en": "Icon library: makes and files app and folder icons.",
+    "es": "Biblioteca de iconos: crea y organiza iconos de apps y carpetas.",
+    "it": "Libreria di icone: crea e organizza le icone di app e cartelle."
+   },
+   "repo": "iCONIQ"
+  },
+  {
+   "id": "kYNEDIT",
+   "name": "kYNEDIT",
+   "bundleId": "com.starbudweiser.kynedit",
+   "category": "creative",
+   "desc": {
+    "fr": "Explorateur de médias et transcodeur pour monteurs.",
+    "en": "Media explorer and transcoder for editors.",
+    "es": "Explorador de medios y transcodificador para editores.",
+    "it": "Esplora media e transcodifica per montatori."
+   }
+  },
+  {
+   "id": "mBACKUP",
+   "name": "mBACKUP",
+   "bundleId": "fr.stephan.mbackup",
+   "category": "files",
+   "desc": {
+    "fr": "Copies miroir planifiées de vos dossiers, dans la barre des menus.",
+    "en": "Scheduled mirror copies of your folders, in the menu bar.",
+    "es": "Copias espejo programadas de tus carpetas, en la barra de menús.",
+    "it": "Copie speculari pianificate delle tue cartelle, nella barra dei menu."
+   },
+   "repo": "mBACKUP",
+   "settings": {
+    "args": [
+     "--settings"
+    ]
+   }
+  },
+  {
+   "id": "mCLEAN",
+   "name": "mCLEAN",
+   "bundleId": "com.stephan.mclean",
+   "category": "system",
+   "desc": {
+    "fr": "Affiche la mémoire du Mac dans la barre des menus et la libère en un clic.",
+    "en": "Shows your Mac's memory in the menu bar and frees it in one click.",
+    "es": "Muestra la memoria del Mac en la barra de menús y la libera con un clic.",
+    "it": "Mostra la memoria del Mac nella barra dei menu e la libera con un clic."
+   },
+   "repo": "mCLEAN"
+  },
+  {
+   "id": "mCLOUD",
+   "name": "mCLOUD",
+   "bundleId": "fr.stephan.mcloud",
+   "category": "files",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   },
+   "repo": "mCLOUD"
+  },
+  {
+   "id": "mDESK",
+   "name": "mDESK",
+   "bundleId": "com.stephan.mdesk",
+   "category": "system",
+   "desc": {
+    "fr": "Mémorise et restaure la position des icônes du bureau et des fenêtres selon les écrans.",
+    "en": "Remembers and restores desktop icon and window positions per display setup.",
+    "es": "Recuerda y restaura la posición de los iconos del escritorio y las ventanas según las pantallas.",
+    "it": "Memorizza e ripristina la posizione di icone e finestre in base agli schermi."
+   },
+   "repo": "mDESK"
+  },
+  {
+   "id": "mFRAMES",
+   "name": "mFRAMES",
+   "bundleId": "fr.stephan.mframes",
+   "category": "creative",
+   "desc": {
+    "fr": "Revue et annotation en direct entre prestataire et client : vidéo, photos, PDF, maquettes.",
+    "en": "Live review and annotation between provider and client: video, photos, PDF, mockups.",
+    "es": "Revisión y anotación en directo entre proveedor y cliente: vídeo, fotos, PDF, maquetas.",
+    "it": "Revisione e annotazione dal vivo tra fornitore e cliente: video, foto, PDF, mockup."
+   }
+  },
+  {
+   "id": "mLINKS",
+   "name": "mLINKS",
+   "bundleId": "fr.stephan.mlinks",
+   "category": "system",
+   "desc": {
+    "fr": "Applis, dossiers, fichiers et liens web à un clic dans la barre des menus.",
+    "en": "Your apps, folders, files and web links one click away in the menu bar.",
+    "es": "Tus apps, carpetas, archivos y enlaces web a un clic en la barra de menús.",
+    "it": "App, cartelle, file e link web a un clic nella barra dei menu."
+   },
+   "repo": "mLINKS"
+  },
+  {
+   "id": "mPARLE",
+   "name": "mPARLE",
+   "bundleId": "fr.stephan.mparle",
+   "category": "ai",
+   "desc": {
+    "fr": "Traduction rapide de tout texte sélectionné, gratuite et locale d'abord.",
+    "en": "Fast translation of any selected text, free and local first.",
+    "es": "Traducción rápida de cualquier texto seleccionado, gratuita y local primero.",
+    "it": "Traduzione rapida di qualsiasi testo selezionato, gratuita e locale prima di tutto."
+   },
+   "repo": "mPARLE"
+  },
+  {
+   "id": "mPASTE",
+   "name": "mPASTE",
+   "bundleId": "fr.stephan.mpaste",
+   "category": "system",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   }
+  },
+  {
+   "id": "mPDF",
+   "name": "mPDF",
+   "bundleId": "fr.stephan.mpdf",
+   "category": "files",
+   "desc": {
+    "fr": "Lecteur et éditeur de PDF rapide et léger.",
+    "en": "A fast, lightweight PDF reader and editor.",
+    "es": "Lector y editor de PDF rápido y ligero.",
+    "it": "Lettore ed editor di PDF veloce e leggero."
+   },
+   "repo": "mPDF"
+  },
+  {
+   "id": "mPIE",
+   "name": "mPIE",
+   "bundleId": "fr.stephan.mpie",
+   "category": "system",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   }
+  },
+  {
+   "id": "mSILENCE",
+   "name": "mSILENCE",
+   "bundleId": "fr.stephan.msilence",
+   "category": "system",
+   "desc": {
+    "fr": "Pare-feu par appli et moniteur réseau personnels.",
+    "en": "Personal per-app firewall and network monitor.",
+    "es": "Cortafuegos por app y monitor de red personales.",
+    "it": "Firewall per app e monitor di rete personali."
+   },
+   "repo": "mSILENCE"
+  },
+  {
+   "id": "mSIZER",
+   "name": "mSIZER",
+   "bundleId": "fr.stephan.msizer",
+   "category": "creative",
+   "desc": {
+    "fr": "Retouche de photos par lots : redimensionner, recadrer, filigrane, convertir.",
+    "en": "Batch photo editor: resize, crop, watermark, convert.",
+    "es": "Edición de fotos por lotes: redimensionar, recortar, marca de agua, convertir.",
+    "it": "Ritocco foto in blocco: ridimensiona, ritaglia, filigrana, converti."
+   },
+   "repo": "mSIZER"
+  },
+  {
+   "id": "mSPACES",
+   "name": "mSPACES",
+   "bundleId": "com.starbudweiser.mspaces",
+   "category": "system",
+   "desc": {
+    "fr": "Organise les icônes de la barre des menus en groupes grâce à des séparateurs.",
+    "en": "Organize your menu bar items into groups with separators.",
+    "es": "Organiza los iconos de la barra de menús en grupos con separadores.",
+    "it": "Organizza le icone della barra dei menu in gruppi con separatori."
+   },
+   "repo": "mSPACES"
+  },
+  {
+   "id": "mSTAGRAM",
+   "name": "mSTAGRAM",
+   "bundleId": "fr.stephan.mstagram",
+   "category": "comms",
+   "desc": {
+    "fr": "Instagram en version téléphone, dans une fenêtre sur le Mac.",
+    "en": "Instagram in its phone version, in a window on your Mac.",
+    "es": "Instagram en versión móvil, en una ventana del Mac.",
+    "it": "Instagram in versione telefono, in una finestra sul Mac."
+   },
+   "repo": "mSTAGRAM"
+  },
+  {
+   "id": "mSTICK",
+   "name": "mSTICK",
+   "bundleId": "fr.stephan.mstick",
+   "category": "system",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   },
+   "repo": "mSTICK"
+  },
+  {
+   "id": "mTAB",
+   "name": "mTAB",
+   "bundleId": "fr.stephan.mtab",
+   "category": "system",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   },
+   "repo": "mTAB"
+  },
+  {
+   "id": "mTAPES",
+   "name": "mTAPES",
+   "bundleId": "fr.stephan.mtapes",
+   "category": "creative",
+   "desc": {
+    "fr": "Enregistreur d'écran natif avec montage automatique, piloté par n'importe quelle IA via MCP.",
+    "en": "Native screen recorder with automatic editing, driven by any AI through MCP.",
+    "es": "Grabador de pantalla nativo con edición automática, controlado por cualquier IA mediante MCP.",
+    "it": "Registratore di schermo nativo con montaggio automatico, pilotato da qualsiasi IA tramite MCP."
+   },
+   "repo": "mTAPES"
+  },
+  {
+   "id": "mUGGINFACE",
+   "name": "mUGGINFACE",
+   "bundleId": "fr.stephan.mugginface",
+   "category": "ai",
+   "desc": {
+    "fr": "Les meilleurs modèles d'IA de Hugging Face, adaptés à ton Mac, avec veille constante.",
+    "en": "The best Hugging Face AI models for your Mac, with constant monitoring.",
+    "es": "Los mejores modelos de IA de Hugging Face, adaptados a tu Mac, con vigilancia constante.",
+    "it": "I migliori modelli di IA di Hugging Face, adatti al tuo Mac, con monitoraggio costante."
+   }
+  },
+  {
+   "id": "qLOOKS",
+   "name": "qLOOKS",
+   "bundleId": "fr.stephan.alphalook",
+   "category": "creative",
+   "desc": {
+    "fr": "Aperçus et vignettes Quick Look pour les formats que macOS ne gère pas.",
+    "en": "Quick Look previews and thumbnails for formats macOS does not handle.",
+    "es": "Vistas previas y miniaturas Quick Look para formatos que macOS no gestiona.",
+    "it": "Anteprime e miniature Quick Look per i formati che macOS non gestisce."
+   },
+   "repo": "qLOOKS"
+  },
+  {
+   "id": "qNOTES",
+   "name": "qNOTES",
+   "bundleId": "fr.stephan.qnotes",
+   "category": "files",
+   "desc": {
+    "fr": "Application du Mac Desktop Toolkit.",
+    "en": "Mac Desktop Toolkit app.",
+    "es": "Aplicación del Mac Desktop Toolkit.",
+    "it": "App del Mac Desktop Toolkit."
+   },
+   "repo": "qNOTES"
+  },
+  {
+   "id": "wCLAUDE",
+   "name": "wCLAUDE",
+   "bundleId": "fr.stephan.wclaude",
+   "category": "ai",
+   "desc": {
+    "fr": "Navigateur macOS que n'importe quelle IA compatible MCP peut piloter entièrement.",
+    "en": "A macOS browser any MCP-compatible AI agent can fully drive.",
+    "es": "Navegador de macOS que cualquier IA compatible con MCP puede controlar por completo.",
+    "it": "Browser per macOS che qualsiasi IA compatibile con MCP può pilotare del tutto."
+   },
+   "repo": "wCLAUDE"
+  }
+ ]
+}

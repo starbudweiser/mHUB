@@ -1,0 +1,160 @@
+// mHUB — briques communes : catalogue, comparaison de versions, commandes système, réseau GitHub.
+import Foundation
+
+struct CatalogApp: Codable, Identifiable, Hashable {
+    struct Launch: Codable, Hashable { var url: String?; var args: [String]? }
+    let id: String
+    let name: String
+    let bundleId: String
+    let category: String
+    var repo: String?
+    let desc: [String: String]
+    var settings: Launch?
+    var presence: Bool?
+
+    var text: String { desc[L.lang] ?? desc["en"] ?? "" }
+}
+
+struct Catalog: Codable {
+    let version: Int
+    let teamID: String
+    let owner: String
+    let apps: [CatalogApp]
+
+    static let categories = ["system", "files", "creative", "comms", "ai"]
+
+    /// Catalogue embarqué dans l'appli (mis à jour avec mHUB).
+    static func load() -> Catalog {
+        guard let url = Bundle.main.url(forResource: "catalogue", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let c = try? JSONDecoder().decode(Catalog.self, from: data) else {
+            return Catalog(version: 0, teamID: "35KLMK53PN", owner: "starbudweiser", apps: [])
+        }
+        return c
+    }
+}
+
+enum VersionCompare {
+    /// « v1.10.0 » est plus récent que « 1.9.2 » : comparaison numérique champ par champ.
+    static func isNewer(_ a: String, than b: String) -> Bool {
+        let pa = parts(a), pb = parts(b)
+        for i in 0..<max(pa.count, pb.count) {
+            let x = i < pa.count ? pa[i] : 0, y = i < pb.count ? pb[i] : 0
+            if x != y { return x > y }
+        }
+        return false
+    }
+    static func clean(_ v: String) -> String { v.trimmingCharacters(in: CharacterSet(charactersIn: "vV ")) }
+    private static func parts(_ v: String) -> [Int] {
+        clean(v).split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }
+    }
+}
+
+enum HubError: LocalizedError {
+    case release, download, signature, bundle, noApp, write, network
+    var errorDescription: String? {
+        switch self {
+        case .release: return L.t("err.release")
+        case .download: return L.t("err.download")
+        case .signature: return L.t("err.signature")
+        case .bundle: return L.t("err.bundle")
+        case .noApp: return L.t("err.noApp")
+        case .write: return L.t("err.write")
+        case .network: return L.t("err.network")
+        }
+    }
+}
+
+struct Release: Equatable {
+    let tag: String
+    let version: String
+    let asset: URL
+    let size: Int64
+    let date: Date?
+
+    /// Dernière release publique d'un dépôt GitHub.
+    static func fetch(owner: String, repo: String) async throws -> Release {
+        var req = URLRequest(url: URL(string: "https://api.github.com/repos/\(owner)/\(repo)/releases/latest")!)
+        req.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
+        req.setValue("mHUB", forHTTPHeaderField: "User-Agent")
+        req.timeoutInterval = 20
+        let (data, resp): (Data, URLResponse)
+        do { (data, resp) = try await URLSession.shared.data(for: req) } catch { throw HubError.network }
+        guard (resp as? HTTPURLResponse)?.statusCode == 200,
+              let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let tag = json["tag_name"] as? String else { throw HubError.release }
+        let assets = (json["assets"] as? [[String: Any]] ?? []).filter { ($0["name"] as? String)?.hasSuffix(".zip") == true }
+        let pick = assets.first { ($0["name"] as? String ?? "").contains("arm64") } ?? assets.first
+        guard let a = pick, let s = a["browser_download_url"] as? String, let url = URL(string: s) else { throw HubError.release }
+        let date = (json["published_at"] as? String).flatMap { ISO8601DateFormatter().date(from: $0) }
+        return Release(tag: tag, version: VersionCompare.clean(tag), asset: url, size: (a["size"] as? NSNumber)?.int64Value ?? 0, date: date)
+    }
+}
+
+enum Sh {
+    /// Lance une commande ; renvoie code de sortie et sortie (standard + erreur).
+    static func run(_ exe: String, _ args: [String]) async -> (code: Int32, out: String) {
+        await withCheckedContinuation { cont in
+            DispatchQueue.global().async {
+                let p = Process(), pipe = Pipe()
+                p.executableURL = URL(fileURLWithPath: exe); p.arguments = args
+                p.standardOutput = pipe; p.standardError = pipe
+                do { try p.run() } catch { cont.resume(returning: (-1, error.localizedDescription)); return }
+                let data = pipe.fileHandleForReading.readDataToEndOfFile()
+                p.waitUntilExit()
+                cont.resume(returning: (p.terminationStatus, String(decoding: data, as: UTF8.self)))
+            }
+        }
+    }
+}
+
+enum Net {
+    private final class Box: @unchecked Sendable { var obs: NSKeyValueObservation? }
+
+    /// Télécharge un fichier avec progression (0…1) ; renvoie un fichier temporaire stable.
+    static func download(_ url: URL, progress: @escaping @Sendable (Double) -> Void) async throws -> URL {
+        let box = Box()
+        defer { box.obs = nil }
+        return try await withCheckedThrowingContinuation { cont in
+            var req = URLRequest(url: url)
+            req.setValue("mHUB", forHTTPHeaderField: "User-Agent")
+            let task = URLSession.shared.downloadTask(with: req) { tmp, resp, err in
+                if err != nil { cont.resume(throwing: HubError.network); return }
+                guard let tmp, (resp as? HTTPURLResponse)?.statusCode == 200 else { cont.resume(throwing: HubError.download); return }
+                let dst = FileManager.default.temporaryDirectory.appendingPathComponent("mhub-\(UUID().uuidString).zip")
+                do { try FileManager.default.moveItem(at: tmp, to: dst); cont.resume(returning: dst) }
+                catch { cont.resume(throwing: HubError.download) }
+            }
+            box.obs = task.progress.observe(\.fractionCompleted) { p, _ in progress(p.fractionCompleted) }
+            task.resume()
+        }
+    }
+}
+
+enum Verify {
+    /// Résultat d'une vérification : appli valide, signée par la bonne équipe ; notarisée ou non.
+    static func app(_ app: URL, bundleId: String, teamID: String) async throws -> Bool {
+        let v = await Sh.run("/usr/bin/codesign", ["--verify", "--deep", "--strict", app.path])
+        guard v.code == 0 else { throw HubError.signature }
+        let info = await Sh.run("/usr/bin/codesign", ["-dv", "--verbose=2", app.path])
+        guard info.out.contains("TeamIdentifier=\(teamID)") else { throw HubError.signature }
+        guard let plist = NSDictionary(contentsOf: app.appendingPathComponent("Contents/Info.plist")),
+              plist["CFBundleIdentifier"] as? String == bundleId else { throw HubError.bundle }
+        let s = await Sh.run("/usr/sbin/spctl", ["--assess", "--type", "execute", app.path])
+        return s.code == 0
+    }
+
+    /// Décompresse une archive et renvoie la première appli trouvée (celle du nom attendu en priorité).
+    static func extract(zip: URL, into out: URL, preferring name: String) async throws -> URL {
+        let r = await Sh.run("/usr/bin/ditto", ["-x", "-k", zip.path, out.path])
+        guard r.code == 0 else { throw HubError.download }
+        let items = (try? FileManager.default.contentsOfDirectory(at: out, includingPropertiesForKeys: nil)) ?? []
+        let apps = items.filter { $0.pathExtension == "app" }
+        guard let a = apps.first(where: { $0.deletingPathExtension().lastPathComponent == name }) ?? apps.first else { throw HubError.noApp }
+        return a
+    }
+}
+
+func formatSize(_ bytes: Int64) -> String {
+    ByteCountFormatter.string(fromByteCount: bytes, countStyle: .file)
+}

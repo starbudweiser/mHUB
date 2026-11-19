@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>mHUB — Maquettes (comparaison des designs)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--rr:20}
+body{font:13px/1.4 -apple-system,"SF Pro Text",system-ui,sans-serif;background:#0b0b0d;color:#eee;-webkit-font-smoothing:antialiased}
+.top{padding:18px 28px 6px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.top h1{font-size:20px;font-weight:700}.top .sub{color:#999}
+.tabs{display:flex;gap:6px;padding:10px 28px;flex-wrap:wrap}
+.tabs button{background:#222;color:#eee;border:0;padding:8px 16px;border-radius:999px;font:inherit;font-weight:500;cursor:pointer}
+.tabs button.on{background:#ffd21e;color:#222}
+.tools{display:none;align-items:center;gap:14px;padding:4px 28px 12px;color:#aaa;flex-wrap:wrap}
+.tools.on{display:flex}
+.tools input[type=range]{width:220px;accent-color:#ffd21e}
+.seg{display:inline-flex;background:#222;border-radius:999px;padding:3px}
+.seg button{border:0;background:none;color:#eee;font:inherit;padding:4px 14px;border-radius:999px;cursor:pointer}
+.seg button.on{background:#444}
+.tools output{color:#fff;font-weight:600;min-width:34px}
+.legend{color:#999;padding:0 28px 10px;max-width:1120px}
+.stage{padding:6px 28px 40px;display:flex;flex-direction:column;gap:22px}
+.cap{color:#888;font-size:12px;margin-bottom:-12px}
+
+/* ---------- thèmes (variables) ---------- */
+.skin{background:var(--bg);color:var(--t);font-size:13px}
+.skin{--m:#ffd21e}
+[data-d=round]{--rw:calc(var(--rr)*1px + 6px);--rb:calc(var(--rr)*1px);--rc:calc(var(--rr)*.6px);--rch:calc(var(--rr)*1px);--sh:0 24px 60px rgba(0,0,0,.35);--shc:none;--bd:none}
+[data-d=round][data-th=sombre]{--bg:#131316;--card:#232327;--ctl:#2c2c31;--t:#f5f5f7;--t2:#98989f;--acc:#0a84ff;--onacc:#fff;--ok:#30d158;--warn:#ff9f0a}
+[data-d=round][data-th=clair]{--bg:#f1f1f5;--card:#fff;--ctl:#e8e8ef;--t:#1c1c22;--t2:#6b6b78;--acc:#6a5af0;--onacc:#fff;--ok:#2fb36a;--warn:#e08a00;--sh:0 24px 60px rgba(0,0,0,.18);--shc:0 1px 0 rgba(0,0,0,.04)}
+[data-d=socle]{--rw:8px;--rb:6px;--rc:4px;--rch:4px;--bg:#131316;--card:#1c1c1f;--ctl:#2c2c31;--t:#f5f5f7;--t2:#98989f;--acc:#0a84ff;--onacc:#fff;--m:#f59e0b;--ok:#30d158;--warn:#ff9f0a;--sh:0 20px 50px rgba(0,0,0,.5);--shc:none;--bd:1px solid #303035;font-size:12.5px}
+[data-d=mat]{--rw:12px;--rb:12px;--rc:8px;--rch:999px;--bg:#f4f1ec;--card:#fff;--ctl:#ebe6de;--t:#26231e;--t2:#7b756a;--acc:#26231e;--onacc:#f4f1ec;--m:#d9622b;--ok:#3f8f5a;--warn:#b7791f;--sh:0 18px 50px rgba(60,40,10,.18);--shc:none;--bd:1px solid #e3ddd2}
+[data-d=mat][data-th=sombre]{--bg:#131316;--card:#232327;--ctl:#2c2c31;--t:#f5f5f7;--t2:#98989f;--acc:#0a84ff;--onacc:#fff;--m:#f08a52;--ok:#30d158;--warn:#ff9f0a;--sh:0 18px 50px rgba(0,0,0,.5);--bd:1px solid #303035}
+[data-d=verre]{--rw:22px;--rb:18px;--rc:12px;--rch:999px;--bg:linear-gradient(135deg,#2a1f5c,#0e4a6b 55%,#14383a);--card:rgba(255,255,255,.10);--ctl:rgba(255,255,255,.14);--t:#f5f5f7;--t2:rgba(235,235,245,.62);--acc:#0a84ff;--onacc:#fff;--m:#ffd21e;--ok:#5fe08a;--warn:#ffc04d;--sh:0 30px 70px rgba(0,0,0,.5);--shc:inset 0 1px 0 rgba(255,255,255,.18);--bd:1px solid rgba(255,255,255,.14)}
+[data-d=verre] .card,[data-d=verre] .menu{backdrop-filter:blur(24px) saturate(1.4)}
+[data-d=verre] .ico{border:1px solid rgba(255,255,255,.25)}
+[data-d=verre] .side{background:rgba(255,255,255,.05)}
+[data-d=socle] .ico{border-radius:4px}
+
+/* ---------- fenêtre du Hub ---------- */
+.win{width:1120px;height:700px;display:grid;grid-template-columns:220px 1fr;grid-template-rows:auto 1fr;overflow:hidden;border-radius:var(--rw);box-shadow:var(--sh)}
+.bar{grid-column:1/3;display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:var(--bd)}
+.lights{display:flex;gap:7px}.lights i{width:12px;height:12px;border-radius:50%;display:block}
+.lights i:nth-child(1){background:#ff5f57}.lights i:nth-child(2){background:#febc2e}.lights i:nth-child(3){background:#28c840}
+.brand{font-weight:700;font-size:15px;margin-left:8px}.m{color:var(--m)}
+.brand small{font-weight:500;color:var(--t2);font-size:12px;margin-left:6px}
+.right{margin-left:auto;display:flex;gap:8px;align-items:center;color:var(--t2);font-size:12px}
+.btn{background:var(--ctl);color:var(--t);padding:6px 12px;border-radius:var(--rc);font-weight:500;display:inline-block;white-space:nowrap}
+.btn.pri{background:var(--acc);color:var(--onacc)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.side{padding:14px;display:flex;flex-direction:column;gap:4px;border-right:var(--bd)}
+.h{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--t2);margin:10px 4px 4px}
+.nav{display:flex;justify-content:space-between;padding:7px 10px;border-radius:var(--rc);color:var(--t)}
+.nav span:last-child{color:var(--t2);font-size:12px}
+.nav.on{background:var(--acc);color:var(--onacc)}.nav.on span:last-child{color:inherit;opacity:.8}
+.upd{margin-top:auto;background:var(--card);border:var(--bd);border-radius:var(--rb);padding:12px;box-shadow:var(--shc)}
+.upd b{display:block;margin-bottom:6px}
+.main{padding:14px 16px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.toolbar{display:flex;gap:8px;align-items:center}
+.search{flex:1;background:var(--ctl);border-radius:var(--rc);padding:8px 12px;color:var(--t2)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;overflow:hidden}
+.card{background:var(--card);border:var(--bd);border-radius:var(--rb);padding:12px;box-shadow:var(--shc);display:flex;flex-direction:column;gap:8px}
+.card.sel{outline:2px solid var(--acc)}
+.head{display:flex;gap:10px;align-items:center}
+.ico{width:40px;height:40px;border-radius:var(--rc);display:grid;place-items:center;font-weight:700;color:#fff;font-size:14px;flex:none}
+.nm{font-weight:650;font-size:14px}
+.ds{color:var(--t2);font-size:12px;line-height:1.35;min-height:32px}
+.foot{display:flex;justify-content:space-between;align-items:center}
+.tag{font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:var(--rch);background:var(--ctl);color:var(--t2);white-space:nowrap}
+.tag.ok{background:color-mix(in srgb,var(--ok) 22%,transparent);color:var(--ok)}
+.tag.warn{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}
+.note{color:var(--t2);font-size:12px;margin-top:auto}
+
+/* ---------- menu de la barre des menus ---------- */
+.mb{display:flex;gap:22px;align-items:flex-start}
+.mbwrap{width:380px;border-radius:var(--rw);overflow:hidden;box-shadow:var(--sh)}
+.strip{height:26px;background:rgba(30,30,34,.92);display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:0 12px;color:#ddd;font-size:12px}
+.strip i{width:14px;height:14px;border-radius:4px;background:#555;display:block}
+.strip i.hub{background:var(--m)}
+.menu{padding:10px;display:flex;flex-direction:column;gap:2px;position:relative}
+.mi{display:flex;align-items:center;gap:10px;padding:6px 8px;border-radius:var(--rc)}
+.mi .ico{width:24px;height:24px;font-size:10px;border-radius:calc(var(--rc)*.7)}
+.mi .n{flex:1;font-weight:500}.mi .s{color:var(--t2);font-size:11px}
+.mi.on{background:var(--acc);color:var(--onacc)}.mi.on .s{color:inherit;opacity:.8}
+.sep{height:1px;background:color-mix(in srgb,var(--t) 14%,transparent);margin:5px 4px}
+.smenu{width:240px;border-radius:var(--rb);padding:8px;background:var(--card);border:var(--bd);box-shadow:var(--sh);display:flex;flex-direction:column;gap:2px}
+.smenu .mi{padding:6px 10px}
+.sw{width:30px;height:18px;border-radius:99px;background:var(--acc);position:relative;display:inline-block}
+.sw::after{content:"";position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff}
+.sw.off{background:var(--ctl)}.sw.off::after{right:auto;left:2px}
+.mi.on .sw{background:var(--onacc)}.mi.on .sw::after{background:var(--acc)}
+</style></head><body>
+<div class="top"><h1><span style="color:#ffd21e">m</span>HUB — Maquettes</h1><span style="color:#999">Même écran dans les 4 designs · fenêtre catalogue + menu de la barre des menus · descriptions des applis provisoires</span></div>
+<nav class="tabs" id="tabs">
+ <button data-d="socle" class="on">Socle standard</button><button data-d="verre">Apple Stephan (verre)</button><button data-d="mat">Flat Mat</button><button data-d="round">Flat Round</button>
+</nav>
+<div class="tools on" id="tools">
+ <span class="seg" id="seg"><button data-th="sombre" class="on">Sombre</button><button data-th="clair">Clair</button></span>
+ <span class="rad">Arrondis des objets</span><input class="rad" type="range" id="rr" min="0" max="32" value="20"><output class="rad" id="rrv">20</output>
+ <span class="seg rad" id="presets"><button data-v="0">Carré</button><button data-v="10">Doux</button><button data-v="20" class="on">Rond</button><button data-v="32">Très rond</button></span>
+</div>
+<div class="legend" id="legend"></div>
+
+<div class="stage" id="stage">
+ <div class="cap">1 · Fenêtre du Hub — catalogue, installation, mises à jour</div>
+ <div class="win skin" id="win" data-d="socle" data-th="sombre">
+  <div class="bar"><div class="lights"><i></i><i></i><i></i></div>
+   <div class="brand"><span class="m">m</span>HUB<small>DESKTOP MAC TOOLKIT</small></div>
+   <div class="right"><span>Dernière vérification : il y a 3 h</span><span class="btn">Vérifier</span><span class="btn">⚙</span></div></div>
+  <div class="side">
+   <div class="h">Bibliothèque</div>
+   <div class="nav on"><span>Toutes</span><span>31</span></div>
+   <div class="nav"><span>Installées</span><span>9</span></div>
+   <div class="nav"><span>Mises à jour</span><span>2</span></div>
+   <div class="nav"><span>Non installées</span><span>22</span></div>
+   <div class="h">Catégories</div>
+   <div class="nav"><span>Système &amp; nettoyage</span><span>6</span></div>
+   <div class="nav"><span>Fichiers &amp; documents</span><span>7</span></div>
+   <div class="nav"><span>Créativité &amp; médias</span><span>8</span></div>
+   <div class="nav"><span>Communication &amp; web</span><span>6</span></div>
+   <div class="nav"><span>IA &amp; automatisation</span><span>4</span></div>
+   <div class="upd"><b>2 mises à jour</b><span class="ds">mBACKUP 2.4 · mPDF 1.9</span><div style="margin-top:8px"><span class="btn pri sm">Tout mettre à jour</span></div></div>
+  </div>
+  <div class="main">
+   <div class="toolbar"><div class="search">⌕  Rechercher une appli…</div><span class="btn">Tri : Nom ▾</span></div>
+   <div class="grid" id="grid"></div>
+   <div class="note">Les applis installées gardent leurs propres réglages : « Réglages » les ouvre directement. 9 installées sur 31 · 22 disponibles.</div>
+  </div>
+ </div>
+
+ <div class="cap">2 · Menu du Hub dans la barre des menus (une seule icône pour tout le kit)</div>
+ <div class="mb skin" id="mb" data-d="socle" data-th="sombre" style="background:none">
+  <div class="mbwrap skin" id="mbw" data-d="socle" data-th="sombre">
+   <div class="strip"><span>Mac Desktop Toolkit</span><i class="hub"></i><i></i><i></i></div>
+   <div class="menu">
+    <div class="mi"><span class="n" style="font-weight:700"><span class="m">m</span>HUB</span><span class="s">9 applis · 2 mises à jour</span></div>
+    <div class="sep"></div>
+    <div class="mi"><span class="ico" style="background:#7c6cff">mB</span><span class="n">mBACKUP</span><span class="s">⟳ MàJ</span><span class="s">›</span></div>
+    <div class="mi on"><span class="ico" style="background:#ff7a59">mC</span><span class="n">mCLEAN</span><span class="s">en cours</span><span class="s">›</span></div>
+    <div class="mi"><span class="ico" style="background:#19a7ce">mP</span><span class="n">mPDF</span><span class="s">⟳ MàJ</span><span class="s">›</span></div>
+    <div class="mi"><span class="ico" style="background:#2fb36a">mT</span><span class="n">mTAPES</span><span class="s">›</span></div>
+    <div class="mi"><span class="ico" style="background:#e0558a">mU</span><span class="n">mUGGINFACE</span><span class="s">›</span></div>
+    <div class="mi"><span class="ico" style="background:#8a8a95">…</span><span class="n">Autres applis (4)</span><span class="s">›</span></div>
+    <div class="sep"></div>
+    <div class="mi"><span class="n">Ouvrir le catalogue…</span><span class="s">⌘ H</span></div>
+    <div class="mi"><span class="n">Réglages de mHUB…</span><span class="s">⌘ ,</span></div>
+    <div class="mi"><span class="n">Quitter mHUB</span><span class="s">⌘ Q</span></div>
+   </div>
+  </div>
+  <div class="smenu skin" id="subm" data-d="socle" data-th="sombre">
+   <div class="mi" style="font-weight:700"><span class="n">mCLEAN</span><span class="s">v1.3 · à jour</span></div>
+   <div class="sep"></div>
+   <div class="mi"><span class="n">Ouvrir</span></div>
+   <div class="mi"><span class="n">Réglages…</span><span class="s">⌘ ,</span></div>
+   <div class="mi"><span class="n">Icône dans la barre des menus</span><span class="sw"></span></div>
+   <div class="mi"><span class="n">Lancer à l'ouverture de session</span><span class="sw off"></span></div>
+   <div class="sep"></div>
+   <div class="mi"><span class="n">Quitter mCLEAN</span></div>
+  </div>
+ </div>
+</div>
+
+<script>
+const APPS=[
+ ["mBACKUP","Sauvegardes automatiques vers le NAS et le cloud.","#7c6cff","maj"],
+ ["mCLEAN","Nettoie le Mac : caches, doublons, restes d'applis.","#ff7a59","ok"],
+ ["mPDF","Lire, annoter, fusionner et signer des PDF.","#19a7ce","maj"],
+ ["mTAPES","Enregistre l'écran en silence et monte la démo.","#2fb36a","ok"],
+ ["mUGGINFACE","Veille des modèles IA adaptés à ton matériel.","#e0558a","ok"],
+ ["iCONIQ","Bibliothèque d'icônes et icônes de dossiers.","#f59e0b","ok"],
+ ["mLINKS","Raccourcis et liens rangés en un clic.","#4f8cff","non"],
+ ["mPASTE","Historique du presse-papiers, recherchable.","#8a63d2","non"],
+ ["mSIZER","Redimensionne et place les fenêtres.","#d9622b","non"]];
+const grid=document.getElementById('grid');
+grid.innerHTML=APPS.map((a,i)=>{
+ const [n,d,c,s]=a;
+ const tag=s==='maj'?'<span class="tag warn">Mise à jour 2.'+(i+3)+'</span>':s==='ok'?'<span class="tag ok">✓ À jour</span>':'<span class="tag">Non installée</span>';
+ const btn=s==='non'?'<span class="btn pri sm">Installer</span>':s==='maj'?'<span class="btn pri sm">Mettre à jour</span>':'<span class="btn sm">Ouvrir</span> <span class="btn sm">Réglages</span>';
+ return `<div class="card${i==1?' sel':''}"><div class="head"><span class="ico" style="background:${c}">${n.slice(0,2)}</span><div><div class="nm">${n}</div>${tag}</div></div><div class="ds">${d}</div><div class="foot">${btn}</div></div>`}).join('');
+
+const $=id=>document.getElementById(id);
+const win=$('win'),mbw=$('mbw'),subm=$('subm'),rr=$('rr'),rrv=$('rrv'),tools=$('tools'),leg=$('legend');
+const els=[win,mbw,subm];
+const L={socle:'Socle standard : sombre, plat, dense, angles droits, un seul accent bleu.',
+verre:'Apple Stephan : cartes en verre translucide sur fond dégradé, flou et reflets.',
+mat:'Flat Mat : fond crème ou charbon, aplats sobres, bordures fines, accent encre/orange (style SOCiALS). Clair / sombre au choix.',
+round:'Flat Round : mat, arrondi, coloré, clair/sombre. Le curseur règle les arrondis de tous les objets.'};
+let th='sombre';
+function set(d){els.forEach(e=>e.dataset.d=d);
+ document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.d===d));
+ $('seg').style.display=(d==='mat'||d==='round')?'':'none';
+ document.querySelectorAll('.rad').forEach(e=>e.style.display=d==='round'?'':'none');
+ if(d==='socle'||d==='verre')setTh('sombre',true);
+ leg.textContent=L[d]}
+function setTh(t,silent){th=t;els.forEach(e=>e.dataset.th=t);document.querySelectorAll('#seg button').forEach(b=>b.classList.toggle('on',b.dataset.th===t))}
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>set(b.dataset.d));
+document.querySelectorAll('#seg button').forEach(b=>b.onclick=()=>setTh(b.dataset.th));
+function rad(v){els.forEach(e=>e.style.setProperty('--rr',v));rr.value=v;rrv.textContent=v;document.querySelectorAll('#presets button').forEach(b=>b.classList.toggle('on',+b.dataset.v===+v))}
+rr.oninput=()=>rad(rr.value);
+document.querySelectorAll('#presets button').forEach(b=>b.onclick=()=>rad(b.dataset.v));
+rad(20);set('socle');
+</script></body></html>

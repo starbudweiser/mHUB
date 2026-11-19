@@ -239,17 +239,15 @@ final class Store: ObservableObject {
         if let i = installed[a.bundleId] { NSWorkspace.shared.activateFileViewerSelecting([i.url]) }
     }
 
-    func canOpenSettings(_ a: CatalogApp) -> Bool { a.settings != nil && installed[a.bundleId] != nil }
+    func canOpenSettings(_ a: CatalogApp) -> Bool { installed[a.bundleId] != nil }
 
-    /// Réglages d'une appli : schéma d'URL ou argument de lancement déclaré dans le catalogue.
+    /// Réglages d'une appli : schéma d'URL déclaré, sinon élément de menu « Réglages… » actionné par l'accessibilité.
     func openSettings(_ a: CatalogApp) {
-        guard let s = a.settings, let i = installed[a.bundleId] else { return }
-        if let u = s.url, let url = URL(string: u) { NSWorkspace.shared.open(url); return }
-        if let args = s.args {
-            if let r = NSRunningApplication.runningApplications(withBundleIdentifier: a.bundleId).first { r.activate(); return }
-            let cfg = NSWorkspace.OpenConfiguration(); cfg.arguments = args; cfg.activates = true
-            NSWorkspace.shared.openApplication(at: i.url, configuration: cfg) { _, _ in }
-        }
+        guard let i = installed[a.bundleId] else { return }
+        if let u = a.settings?.url, let url = URL(string: u) { NSWorkspace.shared.open(url); return }
+        let running = NSRunningApplication.runningApplications(withBundleIdentifier: a.bundleId).first
+        let args = a.settings?.args
+        Task { await AppSettings.open(app: running, launching: i.url, args: args) }
     }
 
     // MARK: Présence des applis (icône de la barre des menus)

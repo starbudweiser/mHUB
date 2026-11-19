@@ -9,10 +9,10 @@
    "bundleId": "fr.stephan.archives",
    "category": "files",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
+    "fr": "Extraction et compression d'archives, directement dans le Finder.",
+    "en": "Archive extraction and compression, right in the Finder.",
+    "es": "Extracción y compresión de archivos, directamente en el Finder.",
+    "it": "Estrazione e compressione di archivi, direttamente nel Finder."
    },
    "repo": "ARCHiVES"
   },
@@ -22,10 +22,10 @@
    "bundleId": "com.starbudweiser.careerdesk",
    "category": "comms",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
+    "fr": "Pilotage de candidatures : offres, sociétés, rédaction assistée par IA et suivi en pipeline.",
+    "en": "Job-application manager: listings, companies, AI-assisted writing and pipeline tracking.",
+    "es": "Gestión de candidaturas: ofertas, empresas, redacción asistida por IA y seguimiento en pipeline.",
+    "it": "Gestione delle candidature: offerte, aziende, scrittura assistita dall'IA e monitoraggio in pipeline."
    }
   },
   {
@@ -34,10 +34,10 @@
    "bundleId": "com.starbudweiser.horizons",
    "category": "comms",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
+    "fr": "Recherche de logement en location : annonces triées selon tes critères, dossier PDF et suivi.",
+    "en": "Home-rental search: listings sorted by your criteria, PDF application file and follow-up.",
+    "es": "Búsqueda de alquiler: anuncios clasificados según tus criterios, dossier en PDF y seguimiento.",
+    "it": "Ricerca di casa in affitto: annunci ordinati secondo i tuoi criteri, dossier PDF e monitoraggio."
    }
   },
   {
@@ -46,10 +46,10 @@
    "bundleId": "fr.stephan.mails",
    "category": "comms",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
+    "fr": "Client mail simple, lisible et léger, en lecture seule.",
+    "en": "A simple, readable and light mail client, read-only.",
+    "es": "Cliente de correo simple, legible y ligero, de solo lectura.",
+    "it": "Client di posta semplice, leggibile e leggero, in sola lettura."
    }
   },
   {
@@ -71,10 +71,10 @@
    "bundleId": "fr.stephan.socials",
    "category": "comms",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
+    "fr": "Toutes tes messageries et réseaux sociaux dans une seule fenêtre, une session isolée par compte.",
+    "en": "All your messaging apps and social networks in one window, one isolated session per account.",
+    "es": "Todas tus mensajerías y redes sociales en una sola ventana, una sesión aislada por cuenta.",
+    "it": "Tutte le tue app di messaggistica e i social in una sola finestra, una sessione isolata per account."
    }
   },
   {
@@ -87,7 +87,8 @@
     "en": "Discover and fetch ARM64 system images (BSD, Linux…).",
     "es": "Descubre y descarga imágenes de sistemas ARM64 (BSD, Linux…).",
     "it": "Scopri e scarica immagini di sistemi ARM64 (BSD, Linux…)."
-   }
+   },
+   "repo": "TESSERaCT"
   },
   {
    "id": "hdCLEANER",
@@ -125,7 +126,8 @@
     "en": "Media explorer and transcoder for editors.",
     "es": "Explorador de medios y transcodificador para editores.",
     "it": "Esplora media e transcodifica per montatori."
-   }
+   },
+   "repo": "KyNEDIT"
   },
   {
    "id": "mBACKUP",
@@ -164,10 +166,10 @@
    "bundleId": "fr.stephan.mcloud",
    "category": "files",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
+    "fr": "Tes comptes cloud comme des disques dans le Finder, sans macFUSE.",
+    "en": "Your cloud accounts as drives in the Finder, without macFUSE.",
+    "es": "Tus cuentas en la nube como discos en el Finder, sin macFUSE.",
+    "it": "I tuoi account cloud come dischi nel Finder, senza macFUSE."
    },
    "repo": "mCLOUD"
   },
@@ -228,11 +230,12 @@
    "bundleId": "fr.stephan.mpaste",
    "category": "system",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
-   }
+    "fr": "⌘V colle en texte brut partout : formatage et paramètres de suivi supprimés.",
+    "en": "⌘V pastes as plain text everywhere: formatting and tracking parameters stripped.",
+    "es": "⌘V pega como texto sin formato en todas partes: sin formato ni parámetros de seguimiento.",
+    "it": "⌘V incolla come testo semplice ovunque: formattazione e parametri di tracciamento rimossi."
+   },
+   "repo": "mPASTE"
   },
   {
    "id": "mPDF",
@@ -253,11 +256,12 @@
    "bundleId": "fr.stephan.mpie",
    "category": "system",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
-   }
+    "fr": "Menu circulaire sous le pointeur : lance, bascule et pilote tes applis et ta musique.",
+    "en": "A pie menu under the pointer: launch, switch and control your apps and music.",
+    "es": "Menú circular bajo el puntero: abre, cambia y controla tus apps y tu música.",
+    "it": "Menu circolare sotto il puntatore: avvia, cambia e controlla le tue app e la tua musica."
+   },
+   "repo": "mPIE"
   },
   {
    "id": "mSILENCE",
@@ -317,10 +321,10 @@
    "bundleId": "fr.stephan.mstick",
    "category": "system",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
+    "fr": "Notes de bureau empilables, chiffrées et toujours à portée de main.",
+    "en": "Desktop notes you can stack, encrypted and always within reach.",
+    "es": "Notas de escritorio apilables, cifradas y siempre a mano.",
+    "it": "Note da scrivania impilabili, cifrate e sempre a portata di mano."
    },
    "repo": "mSTICK"
   },
@@ -330,10 +334,10 @@
    "bundleId": "fr.stephan.mtab",
    "category": "system",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
+    "fr": "Sélecteur de fenêtres : toutes les fenêtres de toutes les applis, aperçus en direct et recherche.",
+    "en": "Window switcher: every window of every app, with live previews and search.",
+    "es": "Selector de ventanas: todas las ventanas de todas las apps, con vistas previas en vivo y búsqueda.",
+    "it": "Selettore di finestre: tutte le finestre di tutte le app, con anteprime dal vivo e ricerca."
    },
    "repo": "mTAB"
   },
@@ -360,7 +364,8 @@
     "en": "The best Hugging Face AI models for your Mac, with constant monitoring.",
     "es": "Los mejores modelos de IA de Hugging Face, adaptados a tu Mac, con vigilancia constante.",
     "it": "I migliori modelli di IA di Hugging Face, adatti al tuo Mac, con monitoraggio costante."
-   }
+   },
+   "repo": "mUGGINFACE"
   },
   {
    "id": "qLOOKS",
@@ -381,10 +386,10 @@
    "bundleId": "fr.stephan.qnotes",
    "category": "files",
    "desc": {
-    "fr": "Application du Mac Desktop Toolkit.",
-    "en": "Mac Desktop Toolkit app.",
-    "es": "Aplicación del Mac Desktop Toolkit.",
-    "it": "App del Mac Desktop Toolkit."
+    "fr": "Notes personnelles en texte enrichi, épinglées et toujours à portée.",
+    "en": "Personal rich-text notes, pinned and always within reach.",
+    "es": "Notas personales en texto enriquecido, ancladas y siempre a mano.",
+    "it": "Note personali in testo ricco, fissate e sempre a portata di mano."
    },
    "repo": "qNOTES"
   },

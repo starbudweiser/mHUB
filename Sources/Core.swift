@@ -65,7 +65,7 @@ enum HubError: LocalizedError {
     }
 }
 
-struct Release: Equatable {
+struct Release: Equatable, Codable {
     let tag: String
     let version: String
     let asset: URL

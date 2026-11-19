@@ -27,6 +27,10 @@ enum Prefs {
         get { d.object(forKey: "lastCheck") as? Date }
         set { d.set(newValue, forKey: "lastCheck") }
     }
+    static var releasesCache: [String: Release] {
+        get { (d.data(forKey: "releasesCache")).flatMap { try? JSONDecoder().decode([String: Release].self, from: $0) } ?? [:] }
+        set { d.set(try? JSONEncoder().encode(newValue), forKey: "releasesCache") }
+    }
     static var installDir: URL {
         get {
             if let p = d.string(forKey: "installDir") { return URL(fileURLWithPath: p) }
@@ -42,7 +46,7 @@ final class Store: ObservableObject {
 
     let catalog = Catalog.load()
     @Published private(set) var installed: [String: InstalledApp] = [:]
-    @Published private(set) var releases: [String: Release] = [:]
+    @Published private(set) var releases: [String: Release] = Prefs.releasesCache
     @Published private(set) var tasks: [String: TaskState] = [:]
     @Published private(set) var checking = false
     @Published private(set) var lastCheck: Date? = Prefs.lastCheck
@@ -125,7 +129,7 @@ final class Store: ObservableObject {
             }
             for await (id, r) in group { if let r { releases[id] = r } }
         }
-        lastCheck = Date(); Prefs.lastCheck = lastCheck
+        lastCheck = Date(); Prefs.lastCheck = lastCheck; Prefs.releasesCache = releases
         installPendingAutomatically()
     }
 

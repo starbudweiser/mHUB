@@ -41,6 +41,7 @@ enum Windows {
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
+        if CommandLine.arguments.contains("--light") { NSApp.appearance = NSAppearance(named: .aqua) }   // captures d'écran
         buildMainMenu()
         Store.shared.start()
         Presence.shared.apply()

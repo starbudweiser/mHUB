@@ -124,14 +124,14 @@ struct Sidebar: View {
                 item(L.t("cat." + c), .category(c), store.apps.filter { $0.category == c }.count)
             }
             Spacer()
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .center, spacing: 6) {
                 Text(store.updatable.isEmpty ? L.t("upd.none") : L.t("upd.count", store.updatable.count)).font(.system(size: 13, weight: .semibold))
                 if !store.updatable.isEmpty {
                     Text(store.updatable.map(\.name).joined(separator: " · ")).font(.system(size: 12)).foregroundStyle(T.text2).lineLimit(2)
                     Button(L.t("btn.updateAll")) { store.updateAll() }.buttonStyle(HubButtonStyle(kind: .primary, small: true))
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading).padding(12)
+            .multilineTextAlignment(.center).frame(maxWidth: .infinity, alignment: .center).padding(12)
             .background(T.card, in: RoundedRectangle(cornerRadius: T.rBox))
         }
         .padding(14).frame(width: 224)
@@ -187,10 +187,12 @@ struct AppCard: View {
                         StatusTag(app: app)
                     }
                 }
-                Text(app.text).font(.system(size: 12)).foregroundStyle(T.text2).lineLimit(2, reservesSpace: true)
+                Text(app.text).font(.system(size: 12)).foregroundStyle(T.text2).lineLimit(5, reservesSpace: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer(minLength: 0)
                 Actions(app: app, compact: true)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, minHeight: 190, alignment: .leading)
         }
     }
 }
@@ -205,16 +207,16 @@ struct Actions: View {
         if let t = store.tasks[app.id] {
             TaskRow(app: app, state: t)
         } else {
-            HStack(spacing: 6) {
+            HStack(spacing: 8) {
                 switch store.status(app) {
                 case .notInstalled:
-                    Button(L.t("btn.install")) { store.install(app) }.buttonStyle(HubButtonStyle(kind: .primary, small: compact))
+                    Button(L.t("btn.install")) { store.install(app) }.buttonStyle(HubButtonStyle(kind: .primary, small: compact, fill: compact))
                 case .update:
-                    Button(L.t("btn.update")) { store.install(app) }.buttonStyle(HubButtonStyle(kind: .primary, small: compact))
-                    Button(L.t("btn.open")) { store.open(app) }.buttonStyle(HubButtonStyle(small: compact))
+                    Button(L.t("btn.open")) { store.open(app) }.buttonStyle(HubButtonStyle(small: compact, fill: compact))
+                    Button(L.t("btn.update")) { store.install(app) }.buttonStyle(HubButtonStyle(kind: .primary, small: compact, fill: compact))
                 case .upToDate, .noRepo:
-                    Button(L.t("btn.open")) { store.open(app) }.buttonStyle(HubButtonStyle(small: compact))
-                    if store.canOpenSettings(app) { Button(L.t("btn.settings")) { store.openSettings(app) }.buttonStyle(HubButtonStyle(small: compact)) }
+                    Button(L.t("btn.open")) { store.open(app) }.buttonStyle(HubButtonStyle(small: compact, fill: compact))
+                    if store.canOpenSettings(app) { Button(L.t("btn.settings")) { store.openSettings(app) }.buttonStyle(HubButtonStyle(small: compact, fill: compact)) }
                 case .unavailable:
                     EmptyView()
                 }

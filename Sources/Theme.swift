@@ -41,11 +41,14 @@ struct HubButtonStyle: ButtonStyle {
     enum Kind { case primary, secondary, ghost }
     var kind: Kind = .secondary
     var small = false
+    var fill = false
     @Environment(\.isEnabled) private var enabled
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.system(size: small ? 12 : 13, weight: .medium))
+            .lineLimit(1).multilineTextAlignment(.center)
+            .frame(maxWidth: fill ? .infinity : nil, alignment: .center)
             .padding(.horizontal, small ? 11 : 14).padding(.vertical, small ? 5 : 7)
             .foregroundStyle(kind == .primary ? Color.white : (kind == .ghost ? T.text2 : T.text))
             .background(kind == .primary ? T.acc : (kind == .ghost ? Color.clear : T.ctl), in: RoundedRectangle(cornerRadius: T.rCtl))

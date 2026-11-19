@@ -9,10 +9,10 @@
    "bundleId": "fr.stephan.archives",
    "category": "files",
    "desc": {
-    "fr": "Extraction et compression d'archives, directement dans le Finder.",
-    "en": "Archive extraction and compression, right in the Finder.",
-    "es": "Extracción y compresión de archivos, directamente en el Finder.",
-    "it": "Estrazione e compressione di archivi, direttamente nel Finder."
+    "fr": "Extrait et compresse les archives (ZIP, 7Z et autres) directement depuis le Finder, avec un niveau de compression réglable. Léger, inspiré de The Unarchiver.",
+    "en": "Extracts and compresses archives (ZIP, 7Z and more) right from the Finder, with an adjustable compression level. Light, inspired by The Unarchiver.",
+    "es": "Extrae y comprime archivos (ZIP, 7Z y más) directamente desde el Finder, con nivel de compresión ajustable. Ligero, inspirado en The Unarchiver.",
+    "it": "Estrae e comprime archivi (ZIP, 7Z e altri) direttamente dal Finder, con livello di compressione regolabile. Leggero, ispirato a The Unarchiver."
    },
    "repo": "ARCHiVES"
   },
@@ -20,24 +20,24 @@
    "id": "CAREERDeSK",
    "name": "CAREERDeSK",
    "bundleId": "com.starbudweiser.careerdesk",
-   "category": "comms",
+   "category": "life",
    "desc": {
-    "fr": "Pilotage de candidatures : offres, sociétés, rédaction assistée par IA et suivi en pipeline.",
-    "en": "Job-application manager: listings, companies, AI-assisted writing and pipeline tracking.",
-    "es": "Gestión de candidaturas: ofertas, empresas, redacción asistida por IA y seguimiento en pipeline.",
-    "it": "Gestione delle candidature: offerte, aziende, scrittura assistita dall'IA e monitoraggio in pipeline."
+    "fr": "Pilote tes candidatures : collecte d'offres, enrichissement des sociétés, rédaction assistée par IA (lettres, messages) et suivi en pipeline. Moteur local, données sur ton Mac.",
+    "en": "Runs your job search: listing collection, company enrichment, AI-assisted writing (letters, messages) and pipeline tracking. Local engine, data stays on your Mac.",
+    "es": "Gestiona tus candidaturas: recopila ofertas, enriquece empresas, redacción asistida por IA (cartas, mensajes) y seguimiento en pipeline. Motor local, datos en tu Mac.",
+    "it": "Gestisce le tue candidature: raccolta offerte, arricchimento aziende, scrittura assistita dall'IA (lettere, messaggi) e monitoraggio in pipeline. Motore locale, dati sul tuo Mac."
    }
   },
   {
    "id": "HORIZONs",
    "name": "HORIZONs",
    "bundleId": "com.starbudweiser.horizons",
-   "category": "comms",
+   "category": "life",
    "desc": {
-    "fr": "Recherche de logement en location : annonces triées selon tes critères, dossier PDF et suivi.",
-    "en": "Home-rental search: listings sorted by your criteria, PDF application file and follow-up.",
-    "es": "Búsqueda de alquiler: anuncios clasificados según tus criterios, dossier en PDF y seguimiento.",
-    "it": "Ricerca di casa in affitto: annunci ordinati secondo i tuoi criteri, dossier PDF e monitoraggio."
+    "fr": "Cherche ton logement en location : annonces récupérées des alertes mail et des sites, triées selon tes critères avec la raison, dossier PDF filigrané et messages rédigés avec l'IA de ton choix.",
+    "en": "Finds your rental home: listings gathered from alert e-mails and websites, sorted by your criteria with the reason, a watermarked PDF application file and messages drafted with the AI of your choice.",
+    "es": "Busca tu alquiler: anuncios de alertas por correo y webs, clasificados según tus criterios con el motivo, dossier PDF con marca de agua y mensajes redactados con la IA que elijas.",
+    "it": "Cerca la tua casa in affitto: annunci da e-mail di avviso e siti, ordinati secondo i tuoi criteri con il motivo, dossier PDF con filigrana e messaggi scritti con l'IA che preferisci."
    }
   },
   {
@@ -46,10 +46,10 @@
    "bundleId": "fr.stephan.mails",
    "category": "comms",
    "desc": {
-    "fr": "Client mail simple, lisible et léger, en lecture seule.",
-    "en": "A simple, readable and light mail client, read-only.",
-    "es": "Cliente de correo simple, legible y ligero, de solo lectura.",
-    "it": "Client di posta semplice, leggibile e leggero, in sola lettura."
+    "fr": "Client mail natif, simple, lisible et léger. Lecture seule : il ne modifie jamais ton courrier (IMAP en consultation uniquement).",
+    "en": "A native mail client: simple, readable and light. Read-only: it never changes your mail (IMAP examine only).",
+    "es": "Cliente de correo nativo, simple, legible y ligero. Solo lectura: nunca modifica tu correo (IMAP solo en consulta).",
+    "it": "Client di posta nativo, semplice, leggibile e leggero. Sola lettura: non modifica mai la tua posta (IMAP solo in consultazione)."
    }
   },
   {
@@ -58,10 +58,10 @@
    "bundleId": "fr.stephan.micone",
    "category": "creative",
    "desc": {
-    "fr": "Transforme n'importe quelle image en icône macOS (.icns).",
-    "en": "Turns any image into a macOS icon (.icns).",
-    "es": "Convierte cualquier imagen en un icono de macOS (.icns).",
-    "it": "Trasforma qualsiasi immagine in un'icona macOS (.icns)."
+    "fr": "Transforme n'importe quelle image en icône macOS (.icns) sur le fond sombre des icônes récentes, crée des icônes de dossier façon Finder et peut générer une icône avec une IA (Pollinations, Hugging Face, Gemini, OpenAI).",
+    "en": "Turns any image into a macOS icon (.icns) on the dark background of recent icons, makes Finder-style folder icons and can generate an icon with an AI service (Pollinations, Hugging Face, Gemini, OpenAI).",
+    "es": "Convierte cualquier imagen en un icono de macOS (.icns) sobre el fondo oscuro de los iconos recientes, crea iconos de carpeta al estilo Finder y puede generar un icono con una IA (Pollinations, Hugging Face, Gemini, OpenAI).",
+    "it": "Trasforma qualsiasi immagine in un'icona macOS (.icns) sullo sfondo scuro delle icone recenti, crea icone di cartella in stile Finder e può generare un'icona con un'IA (Pollinations, Hugging Face, Gemini, OpenAI)."
    },
    "repo": "MiCONE"
   },
@@ -71,22 +71,22 @@
    "bundleId": "fr.stephan.socials",
    "category": "comms",
    "desc": {
-    "fr": "Toutes tes messageries et réseaux sociaux dans une seule fenêtre, une session isolée par compte.",
-    "en": "All your messaging apps and social networks in one window, one isolated session per account.",
-    "es": "Todas tus mensajerías y redes sociales en una sola ventana, una sesión aislada por cuenta.",
-    "it": "Tutte le tue app di messaggistica e i social in una sola finestra, una sessione isolata per account."
+    "fr": "Toutes tes messageries et réseaux sociaux (WhatsApp, Telegram, Instagram, Slack, Gmail…) dans une seule fenêtre native : une session isolée par compte, donc plusieurs comptes d'un même service.",
+    "en": "All your messaging apps and social networks (WhatsApp, Telegram, Instagram, Slack, Gmail…) in one native window: one isolated session per account, so several accounts of one service.",
+    "es": "Todas tus mensajerías y redes sociales (WhatsApp, Telegram, Instagram, Slack, Gmail…) en una sola ventana nativa: una sesión aislada por cuenta, y varias cuentas de un mismo servicio.",
+    "it": "Tutte le tue app di messaggistica e i social (WhatsApp, Telegram, Instagram, Slack, Gmail…) in una sola finestra nativa: una sessione isolata per account, quindi più account dello stesso servizio."
    }
   },
   {
    "id": "TESSERaCT",
    "name": "TESSERaCT",
    "bundleId": "fr.stephan.tesseract",
-   "category": "system",
+   "category": "virt",
    "desc": {
-    "fr": "Découvre et récupère des images de systèmes ARM64 (BSD, Linux…).",
-    "en": "Discover and fetch ARM64 system images (BSD, Linux…).",
-    "es": "Descubre y descarga imágenes de sistemas ARM64 (BSD, Linux…).",
-    "it": "Scopri e scarica immagini di sistemi ARM64 (BSD, Linux…)."
+    "fr": "Découvre et télécharge des images de systèmes ARM64 (BSD, Linux…) prêtes pour tes machines virtuelles sur Apple Silicon.",
+    "en": "Discovers and downloads ARM64 system images (BSD, Linux…) ready for your virtual machines on Apple Silicon.",
+    "es": "Descubre y descarga imágenes de sistemas ARM64 (BSD, Linux…) listas para tus máquinas virtuales en Apple Silicon.",
+    "it": "Scopre e scarica immagini di sistemi ARM64 (BSD, Linux…) pronte per le tue macchine virtuali su Apple Silicon."
    },
    "repo": "TESSERaCT"
   },
@@ -96,10 +96,10 @@
    "bundleId": "com.stephan.hdcleaner",
    "category": "system",
    "desc": {
-    "fr": "Nettoyeur de disque : déchets, nettoyage système, désinstalleur d'applis, fichiers cachés.",
-    "en": "Disk cleaner: junk, system cleanup, app uninstaller, hidden files.",
-    "es": "Limpiador de disco: basura, limpieza del sistema, desinstalador de apps, archivos ocultos.",
-    "it": "Pulitore del disco: rifiuti, pulizia del sistema, disinstallatore di app, file nascosti."
+    "fr": "Nettoyeur de disque en 19 catégories : caches (jamais l'historique ni les mots de passe), journaux, corbeille, gros fichiers, restes d'applis désinstallées. Désinstalleur d'applis et fichiers cachés inclus.",
+    "en": "Disk cleaner with 19 categories: caches (never history or passwords), logs, Trash, large files, leftovers of uninstalled apps. App uninstaller and hidden files included.",
+    "es": "Limpiador de disco con 19 categorías: cachés (nunca historial ni contraseñas), registros, papelera, archivos grandes, restos de apps desinstaladas. Incluye desinstalador de apps y archivos ocultos.",
+    "it": "Pulitore del disco con 19 categorie: cache (mai cronologia né password), registri, cestino, file grandi, resti di app disinstallate. Include disinstallatore di app e file nascosti."
    },
    "repo": "hdCLEANER"
   },
@@ -109,10 +109,10 @@
    "bundleId": "fr.stephan.iconiq",
    "category": "creative",
    "desc": {
-    "fr": "Bibliothèque d'icônes : fabrique et range les icônes d'applis et de dossiers.",
-    "en": "Icon library: makes and files app and folder icons.",
-    "es": "Biblioteca de iconos: crea y organiza iconos de apps y carpetas.",
-    "it": "Libreria di icone: crea e organizza le icone di app e cartelle."
+    "fr": "Bibliothèque d'icônes : fabrique et range les icônes d'applis et de dossiers. Pilotable par IA (Claude, Codex, Cursor, Gemini CLI) via un serveur MCP intégré, sur autorisation.",
+    "en": "Icon library: makes and files app and folder icons. Can be driven by AI (Claude, Codex, Cursor, Gemini CLI) through a built-in MCP server, with your approval.",
+    "es": "Biblioteca de iconos: crea y organiza iconos de apps y carpetas. Controlable por IA (Claude, Codex, Cursor, Gemini CLI) mediante un servidor MCP integrado, con tu autorización.",
+    "it": "Libreria di icone: crea e organizza le icone di app e cartelle. Pilotabile da IA (Claude, Codex, Cursor, Gemini CLI) tramite un server MCP integrato, con la tua autorizzazione."
    },
    "repo": "iCONIQ"
   },
@@ -122,10 +122,10 @@
    "bundleId": "com.starbudweiser.kynedit",
    "category": "creative",
    "desc": {
-    "fr": "Explorateur de médias et transcodeur pour monteurs.",
-    "en": "Media explorer and transcoder for editors.",
-    "es": "Explorador de medios y transcodificador para editores.",
-    "it": "Esplora media e transcodifica per montatori."
+    "fr": "Explorateur de médias et transcodeur pour monteurs : notes, mots-clés, marqueurs et sous-clips, transcodage rapide, export vers DaVinci Resolve, Final Cut Pro et Premiere Pro. Sans jamais toucher aux sources.",
+    "en": "Media browser and transcoder for editors: ratings, keywords, markers and subclips, fast transcoding, export to DaVinci Resolve, Final Cut Pro and Premiere Pro. Source files are never modified.",
+    "es": "Explorador de medios y transcodificador para editores: valoraciones, palabras clave, marcadores y subclips, transcodificación rápida, exportación a DaVinci Resolve, Final Cut Pro y Premiere Pro. Nunca modifica los originales.",
+    "it": "Esplora media e transcodifica per montatori: valutazioni, parole chiave, marcatori e subclip, transcodifica rapida, esportazione verso DaVinci Resolve, Final Cut Pro e Premiere Pro. Non tocca mai i file originali."
    },
    "repo": "KyNEDIT"
   },
@@ -135,10 +135,10 @@
    "bundleId": "fr.stephan.mbackup",
    "category": "files",
    "desc": {
-    "fr": "Copies miroir planifiées de vos dossiers, dans la barre des menus.",
-    "en": "Scheduled mirror copies of your folders, in the menu bar.",
-    "es": "Copias espejo programadas de tus carpetas, en la barra de menús.",
-    "it": "Copie speculari pianificate delle tue cartelle, nella barra dei menu."
+    "fr": "Copies miroir planifiées de tes dossiers, depuis la barre des menus. Rapide, fiable et silencieux, avec des réglages par dossier.",
+    "en": "Scheduled mirror copies of your folders, from the menu bar. Fast, reliable and silent, with per-folder settings.",
+    "es": "Copias espejo programadas de tus carpetas, desde la barra de menús. Rápido, fiable y silencioso, con ajustes por carpeta.",
+    "it": "Copie speculari pianificate delle tue cartelle, dalla barra dei menu. Veloce, affidabile e silenzioso, con impostazioni per cartella."
    },
    "repo": "mBACKUP",
    "settings": {
@@ -166,10 +166,10 @@
    "bundleId": "fr.stephan.mcloud",
    "category": "files",
    "desc": {
-    "fr": "Tes comptes cloud comme des disques dans le Finder, sans macFUSE.",
-    "en": "Your cloud accounts as drives in the Finder, without macFUSE.",
-    "es": "Tus cuentas en la nube como discos en el Finder, sin macFUSE.",
-    "it": "I tuoi account cloud come dischi nel Finder, senza macFUSE."
+    "fr": "Monte tes comptes cloud (Google Drive, Dropbox, OneDrive, iCloud Drive, MEGA, S3, SFTP, Nextcloud…) comme des disques dans le Finder, sans macFUSE. Chiffrement côté client et reconnexion automatique.",
+    "en": "Mounts your cloud accounts (Google Drive, Dropbox, OneDrive, iCloud Drive, MEGA, S3, SFTP, Nextcloud…) as drives in the Finder, without macFUSE. Client-side encryption and automatic reconnection.",
+    "es": "Monta tus cuentas en la nube (Google Drive, Dropbox, OneDrive, iCloud Drive, MEGA, S3, SFTP, Nextcloud…) como discos en el Finder, sin macFUSE. Cifrado en el cliente y reconexión automática.",
+    "it": "Monta i tuoi account cloud (Google Drive, Dropbox, OneDrive, iCloud Drive, MEGA, S3, SFTP, Nextcloud…) come dischi nel Finder, senza macFUSE. Cifratura lato client e riconnessione automatica."
    },
    "repo": "mCLOUD"
   },
@@ -179,10 +179,10 @@
    "bundleId": "com.stephan.mdesk",
    "category": "system",
    "desc": {
-    "fr": "Mémorise et restaure la position des icônes du bureau et des fenêtres selon les écrans.",
-    "en": "Remembers and restores desktop icon and window positions per display setup.",
-    "es": "Recuerda y restaura la posición de los iconos del escritorio y las ventanas según las pantallas.",
-    "it": "Memorizza e ripristina la posizione di icone e finestre in base agli schermi."
+    "fr": "Mémorise et restaure la position des icônes du bureau et des fenêtres selon les écrans branchés.",
+    "en": "Remembers and restores desktop icon and window positions for each display setup.",
+    "es": "Recuerda y restaura la posición de los iconos del escritorio y las ventanas según las pantallas conectadas.",
+    "it": "Memorizza e ripristina la posizione di icone e finestre in base agli schermi collegati."
    },
    "repo": "mDESK"
   },
@@ -192,10 +192,10 @@
    "bundleId": "fr.stephan.mframes",
    "category": "creative",
    "desc": {
-    "fr": "Revue et annotation en direct entre prestataire et client : vidéo, photos, PDF, maquettes.",
-    "en": "Live review and annotation between provider and client: video, photos, PDF, mockups.",
-    "es": "Revisión y anotación en directo entre proveedor y cliente: vídeo, fotos, PDF, maquetas.",
-    "it": "Revisione e annotazione dal vivo tra fornitore e cliente: video, foto, PDF, mockup."
+    "fr": "Revue et annotation en direct entre prestataire et client (vidéo, photos, PDF, maquettes), en connexion directe chiffrée de bout en bout. Le client n'a rien à installer : un lien suffit.",
+    "en": "Live review and annotation between provider and client (video, photos, PDF, mockups) over an end-to-end encrypted direct connection. The client installs nothing: a link is enough.",
+    "es": "Revisión y anotación en directo entre proveedor y cliente (vídeo, fotos, PDF, maquetas) con conexión directa cifrada de extremo a extremo. El cliente no instala nada: basta un enlace.",
+    "it": "Revisione e annotazione dal vivo tra fornitore e cliente (video, foto, PDF, mockup) con connessione diretta cifrata end-to-end. Il cliente non installa nulla: basta un link."
    }
   },
   {
@@ -204,10 +204,10 @@
    "bundleId": "fr.stephan.mlinks",
    "category": "system",
    "desc": {
-    "fr": "Applis, dossiers, fichiers et liens web à un clic dans la barre des menus.",
-    "en": "Your apps, folders, files and web links one click away in the menu bar.",
-    "es": "Tus apps, carpetas, archivos y enlaces web a un clic en la barra de menús.",
-    "it": "App, cartelle, file e link web a un clic nella barra dei menu."
+    "fr": "Tes applis, dossiers, fichiers et liens web à un clic dans la barre des menus, organisés comme tu veux.",
+    "en": "Your apps, folders, files and web links one click away in the menu bar, organized your way.",
+    "es": "Tus apps, carpetas, archivos y enlaces web a un clic en la barra de menús, organizados a tu manera.",
+    "it": "App, cartelle, file e link web a un clic nella barra dei menu, organizzati a modo tuo."
    },
    "repo": "mLINKS"
   },
@@ -217,10 +217,10 @@
    "bundleId": "fr.stephan.mparle",
    "category": "ai",
    "desc": {
-    "fr": "Traduction rapide de tout texte sélectionné, gratuite et locale d'abord.",
-    "en": "Fast translation of any selected text, free and local first.",
-    "es": "Traducción rápida de cualquier texto seleccionado, gratuita y local primero.",
-    "it": "Traduzione rapida di qualsiasi testo selezionato, gratuita e locale prima di tutto."
+    "fr": "Traduction rapide de tout texte sélectionné. Moteurs au choix : Apple Translation (local, hors ligne, par défaut), Google, DeepL ou un modèle IA local (Ollama…).",
+    "en": "Fast translation of any selected text. Choose your engine: Apple Translation (local, offline, default), Google, DeepL or a local AI model (Ollama…).",
+    "es": "Traducción rápida de cualquier texto seleccionado. Motor a elegir: Apple Translation (local, sin conexión, por defecto), Google, DeepL o un modelo de IA local (Ollama…).",
+    "it": "Traduzione rapida di qualsiasi testo selezionato. Motore a scelta: Apple Translation (locale, offline, predefinito), Google, DeepL o un modello IA locale (Ollama…)."
    },
    "repo": "mPARLE"
   },
@@ -230,10 +230,10 @@
    "bundleId": "fr.stephan.mpaste",
    "category": "system",
    "desc": {
-    "fr": "⌘V colle en texte brut partout : formatage et paramètres de suivi supprimés.",
-    "en": "⌘V pastes as plain text everywhere: formatting and tracking parameters stripped.",
-    "es": "⌘V pega como texto sin formato en todas partes: sin formato ni parámetros de seguimiento.",
-    "it": "⌘V incolla come testo semplice ovunque: formattazione e parametri di tracciamento rimossi."
+    "fr": "⌘V colle en texte brut partout : supprime le formatage, retire les paramètres de suivi des liens (utm, fbclid…), nettoie les espaces et redresse les guillemets.",
+    "en": "⌘V pastes as plain text everywhere: strips formatting, removes tracking parameters from links (utm, fbclid…), trims spaces and straightens quotes.",
+    "es": "⌘V pega como texto sin formato en todas partes: quita el formato, elimina parámetros de seguimiento de enlaces (utm, fbclid…), limpia espacios y endereza comillas.",
+    "it": "⌘V incolla come testo semplice ovunque: toglie la formattazione, rimuove i parametri di tracciamento dai link (utm, fbclid…), pulisce gli spazi e raddrizza le virgolette."
    },
    "repo": "mPASTE"
   },
@@ -243,10 +243,10 @@
    "bundleId": "fr.stephan.mpdf",
    "category": "files",
    "desc": {
-    "fr": "Lecteur et éditeur de PDF rapide et léger.",
-    "en": "A fast, lightweight PDF reader and editor.",
-    "es": "Lector y editor de PDF rápido y ligero.",
-    "it": "Lettore ed editor di PDF veloce e leggero."
+    "fr": "Lecteur et éditeur de PDF rapide et léger : lire, annoter, remplir et réorganiser les pages sans lourdeur.",
+    "en": "A fast, lightweight PDF reader and editor: read, annotate, fill in and reorder pages without the bloat.",
+    "es": "Lector y editor de PDF rápido y ligero: leer, anotar, rellenar y reorganizar páginas sin lastre.",
+    "it": "Lettore ed editor di PDF veloce e leggero: leggi, annota, compila e riordina le pagine senza appesantire."
    },
    "repo": "mPDF"
   },
@@ -256,10 +256,10 @@
    "bundleId": "fr.stephan.mpie",
    "category": "system",
    "desc": {
-    "fr": "Menu circulaire sous le pointeur : lance, bascule et pilote tes applis et ta musique.",
-    "en": "A pie menu under the pointer: launch, switch and control your apps and music.",
-    "es": "Menú circular bajo el puntero: abre, cambia y controla tus apps y tu música.",
-    "it": "Menu circolare sotto il puntatore: avvia, cambia e controlla le tue app e la tua musica."
+    "fr": "Menu circulaire qui s'ouvre sous le pointeur : lance et bascule tes applis, pilote ta musique, en modules configurables.",
+    "en": "A pie menu that opens under the pointer: launch and switch apps, control your music, in configurable modules.",
+    "es": "Menú circular que se abre bajo el puntero: abre y cambia apps, controla tu música, en módulos configurables.",
+    "it": "Menu circolare che si apre sotto il puntatore: avvia e cambia app, controlla la musica, in moduli configurabili."
    },
    "repo": "mPIE"
   },
@@ -269,10 +269,10 @@
    "bundleId": "fr.stephan.msilence",
    "category": "system",
    "desc": {
-    "fr": "Pare-feu par appli et moniteur réseau personnels.",
-    "en": "Personal per-app firewall and network monitor.",
-    "es": "Cortafuegos por app y monitor de red personales.",
-    "it": "Firewall per app e monitor di rete personali."
+    "fr": "Pare-feu par appli et moniteur réseau personnels : vois qui parle sur le réseau et décide appli par appli.",
+    "en": "Personal per-app firewall and network monitor: see who talks on the network and decide app by app.",
+    "es": "Cortafuegos por app y monitor de red personales: ve quién habla en la red y decide app por app.",
+    "it": "Firewall per app e monitor di rete personali: vedi chi comunica in rete e decidi app per app."
    },
    "repo": "mSILENCE"
   },
@@ -282,10 +282,10 @@
    "bundleId": "fr.stephan.msizer",
    "category": "creative",
    "desc": {
-    "fr": "Retouche de photos par lots : redimensionner, recadrer, filigrane, convertir.",
-    "en": "Batch photo editor: resize, crop, watermark, convert.",
-    "es": "Edición de fotos por lotes: redimensionar, recortar, marca de agua, convertir.",
-    "it": "Ritocco foto in blocco: ridimensiona, ritaglia, filigrana, converti."
+    "fr": "Retouche de photos par lots : redimensionner, recadrer, filigrane et conversion de format, en glisser-déposer.",
+    "en": "Batch photo editor: resize, crop, watermark and convert formats, by drag and drop.",
+    "es": "Edición de fotos por lotes: redimensionar, recortar, marca de agua y conversión de formato, arrastrando y soltando.",
+    "it": "Ritocco foto in blocco: ridimensiona, ritaglia, filigrana e converti formato, con il trascinamento."
    },
    "repo": "mSIZER"
   },
@@ -295,10 +295,10 @@
    "bundleId": "com.starbudweiser.mspaces",
    "category": "system",
    "desc": {
-    "fr": "Organise les icônes de la barre des menus en groupes grâce à des séparateurs.",
-    "en": "Organize your menu bar items into groups with separators.",
-    "es": "Organiza los iconos de la barra de menús en grupos con separadores.",
-    "it": "Organizza le icone della barra dei menu in gruppi con separatori."
+    "fr": "Organise les icônes de la barre des menus en groupes grâce à des séparateurs, pour la désencombrer.",
+    "en": "Organizes your menu bar items into groups with separators, to declutter it.",
+    "es": "Organiza los iconos de la barra de menús en grupos con separadores, para despejarla.",
+    "it": "Organizza le icone della barra dei menu in gruppi con separatori, per liberarla."
    },
    "repo": "mSPACES"
   },
@@ -308,10 +308,10 @@
    "bundleId": "fr.stephan.mstagram",
    "category": "comms",
    "desc": {
-    "fr": "Instagram en version téléphone, dans une fenêtre sur le Mac.",
-    "en": "Instagram in its phone version, in a window on your Mac.",
-    "es": "Instagram en versión móvil, en una ventana del Mac.",
-    "it": "Instagram in versione telefono, in una finestra sul Mac."
+    "fr": "Instagram en version téléphone, dans une fenêtre sur le Mac : fonctions mobiles incluses, sans l'appli iPhone.",
+    "en": "Instagram in its phone version, in a window on your Mac: mobile features included, without the iPhone app.",
+    "es": "Instagram en versión móvil, en una ventana del Mac: funciones móviles incluidas, sin la app de iPhone.",
+    "it": "Instagram in versione telefono, in una finestra sul Mac: funzioni mobili incluse, senza l'app per iPhone."
    },
    "repo": "mSTAGRAM"
   },
@@ -319,12 +319,12 @@
    "id": "mSTICK",
    "name": "mSTICK",
    "bundleId": "fr.stephan.mstick",
-   "category": "system",
+   "category": "files",
    "desc": {
-    "fr": "Notes de bureau empilables, chiffrées et toujours à portée de main.",
-    "en": "Desktop notes you can stack, encrypted and always within reach.",
-    "es": "Notas de escritorio apilables, cifradas y siempre a mano.",
-    "it": "Note da scrivania impilabili, cifrate e sempre a portata di mano."
+    "fr": "Notes de bureau empilables, chiffrées et toujours à portée de main : listes à cocher, Markdown, calcul intelligent et rappels.",
+    "en": "Desktop notes you can stack, encrypted and always within reach: checklists, Markdown, smart calc and reminders.",
+    "es": "Notas de escritorio apilables, cifradas y siempre a mano: listas de tareas, Markdown, cálculo inteligente y recordatorios.",
+    "it": "Note da scrivania impilabili, cifrate e sempre a portata di mano: liste di controllo, Markdown, calcolo intelligente e promemoria."
    },
    "repo": "mSTICK"
   },
@@ -334,10 +334,10 @@
    "bundleId": "fr.stephan.mtab",
    "category": "system",
    "desc": {
-    "fr": "Sélecteur de fenêtres : toutes les fenêtres de toutes les applis, aperçus en direct et recherche.",
-    "en": "Window switcher: every window of every app, with live previews and search.",
-    "es": "Selector de ventanas: todas las ventanas de todas las apps, con vistas previas en vivo y búsqueda.",
-    "it": "Selettore di finestre: tutte le finestre di tutte le app, con anteprime dal vivo e ricerca."
+    "fr": "Sélecteur de fenêtres : toutes les fenêtres de toutes les applis avec aperçus en direct, recherche et jusqu'à neuf raccourcis configurables.",
+    "en": "Window switcher: every window of every app with live previews, search and up to nine configurable shortcuts.",
+    "es": "Selector de ventanas: todas las ventanas de todas las apps con vistas previas en vivo, búsqueda y hasta nueve atajos configurables.",
+    "it": "Selettore di finestre: tutte le finestre di tutte le app con anteprime dal vivo, ricerca e fino a nove scorciatoie configurabili."
    },
    "repo": "mTAB"
   },
@@ -347,10 +347,10 @@
    "bundleId": "fr.stephan.mtapes",
    "category": "creative",
    "desc": {
-    "fr": "Enregistreur d'écran natif avec montage automatique, piloté par n'importe quelle IA via MCP.",
-    "en": "Native screen recorder with automatic editing, driven by any AI through MCP.",
-    "es": "Grabador de pantalla nativo con edición automática, controlado por cualquier IA mediante MCP.",
-    "it": "Registratore di schermo nativo con montaggio automatico, pilotato da qualsiasi IA tramite MCP."
+    "fr": "Enregistreur d'écran natif qui monte tes démos tout seul. Pilotable par n'importe quelle IA via MCP (10 outils) : elle filme, annonce ses actions et monte la prise elle-même.",
+    "en": "A native screen recorder that edits your demos for you. Any AI can drive it through MCP (10 tools): it records, announces its actions and edits the take itself.",
+    "es": "Grabador de pantalla nativo que edita tus demos por ti. Cualquier IA puede controlarlo mediante MCP (10 herramientas): graba, anuncia sus acciones y edita la toma.",
+    "it": "Registratore di schermo nativo che monta le tue demo da solo. Qualsiasi IA può pilotarlo tramite MCP (10 strumenti): registra, annuncia le sue azioni e monta la ripresa."
    },
    "repo": "mTAPES"
   },
@@ -360,10 +360,10 @@
    "bundleId": "fr.stephan.mugginface",
    "category": "ai",
    "desc": {
-    "fr": "Les meilleurs modèles d'IA de Hugging Face, adaptés à ton Mac, avec veille constante.",
-    "en": "The best Hugging Face AI models for your Mac, with constant monitoring.",
-    "es": "Los mejores modelos de IA de Hugging Face, adaptados a tu Mac, con vigilancia constante.",
-    "it": "I migliori modelli di IA di Hugging Face, adatti al tuo Mac, con monitoraggio costante."
+    "fr": "Les meilleurs modèles d'IA de Hugging Face, adaptés à ton Mac (puce, mémoire), avec une veille constante des nouveautés.",
+    "en": "The best Hugging Face AI models, matched to your Mac (chip, memory), with constant monitoring of new releases.",
+    "es": "Los mejores modelos de IA de Hugging Face, adaptados a tu Mac (chip, memoria), con vigilancia constante de novedades.",
+    "it": "I migliori modelli IA di Hugging Face, adatti al tuo Mac (chip, memoria), con monitoraggio costante delle novità."
    },
    "repo": "mUGGINFACE"
   },
@@ -373,10 +373,10 @@
    "bundleId": "fr.stephan.alphalook",
    "category": "creative",
    "desc": {
-    "fr": "Aperçus et vignettes Quick Look pour les formats que macOS ne gère pas.",
-    "en": "Quick Look previews and thumbnails for formats macOS does not handle.",
-    "es": "Vistas previas y miniaturas Quick Look para formatos que macOS no gestiona.",
-    "it": "Anteprime e miniature Quick Look per i formati che macOS non gestisce."
+    "fr": "Aperçus et vignettes Quick Look pour les formats que macOS ne gère pas : appuie sur Espace dans le Finder et regarde.",
+    "en": "Quick Look previews and thumbnails for formats macOS does not handle: press Space in the Finder and look.",
+    "es": "Vistas previas y miniaturas Quick Look para formatos que macOS no gestiona: pulsa Espacio en el Finder y mira.",
+    "it": "Anteprime e miniature Quick Look per i formati che macOS non gestisce: premi Spazio nel Finder e guarda."
    },
    "repo": "qLOOKS"
   },
@@ -386,10 +386,10 @@
    "bundleId": "fr.stephan.qnotes",
    "category": "files",
    "desc": {
-    "fr": "Notes personnelles en texte enrichi, épinglées et toujours à portée.",
-    "en": "Personal rich-text notes, pinned and always within reach.",
-    "es": "Notas personales en texto enriquecido, ancladas y siempre a mano.",
-    "it": "Note personali in testo ricco, fissate e sempre a portata di mano."
+    "fr": "Notes personnelles en texte enrichi, épinglables et toujours à portée, inspirées de Tot.",
+    "en": "Personal rich-text notes, pinnable and always within reach, inspired by Tot.",
+    "es": "Notas personales en texto enriquecido, anclables y siempre a mano, inspiradas en Tot.",
+    "it": "Note personali in testo ricco, fissabili e sempre a portata di mano, ispirate a Tot."
    },
    "repo": "qNOTES"
   },
@@ -399,10 +399,10 @@
    "bundleId": "fr.stephan.wclaude",
    "category": "ai",
    "desc": {
-    "fr": "Navigateur macOS que n'importe quelle IA compatible MCP peut piloter entièrement.",
-    "en": "A macOS browser any MCP-compatible AI agent can fully drive.",
-    "es": "Navegador de macOS que cualquier IA compatible con MCP puede controlar por completo.",
-    "it": "Browser per macOS che qualsiasi IA compatibile con MCP può pilotare del tutto."
+    "fr": "Navigateur macOS que n'importe quelle IA compatible MCP pilote entièrement : onglets, lecture, clics, saisie, envois de fichiers sans limite, connexion par le Trousseau, mode iPhone par site. Tu la regardes travailler dans une vraie fenêtre.",
+    "en": "A macOS browser any MCP-compatible AI agent can fully drive: tabs, reading, clicks, typing, uploads of any size, Keychain sign-in, per-site iPhone mode. You watch it work in a real window.",
+    "es": "Navegador de macOS que cualquier IA compatible con MCP controla por completo: pestañas, lectura, clics, escritura, subidas de cualquier tamaño, inicio de sesión con el llavero, modo iPhone por sitio. La ves trabajar en una ventana real.",
+    "it": "Browser per macOS che qualsiasi IA compatibile con MCP pilota del tutto: schede, lettura, clic, digitazione, caricamenti di qualsiasi dimensione, accesso con il portachiavi, modalità iPhone per sito. La vedi lavorare in una finestra reale."
    },
    "repo": "wCLAUDE"
   }

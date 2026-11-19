@@ -75,5 +75,10 @@ for id_, bid, repo, cat, d, st in A:
     if st: e["settings"] = st
     out["apps"].append(e)
 path = os.path.join(os.path.dirname(__file__), "..", "Resources", "catalogue.json")
+# La version ne change que si le contenu change (sinon chaque compilation salirait le dépôt).
+try:
+    old = json.load(open(path))
+    if {**old, "version": 0} == {**out, "version": 0}: out["version"] = old["version"]
+except Exception: pass
 json.dump(out, open(path, "w"), ensure_ascii=False, indent=1)
 print(len(out["apps"]), "applis")

@@ -23,14 +23,42 @@ struct Catalog: Codable {
 
     static let categories = ["system", "files", "creative", "comms", "ai", "virt"]
 
-    /// Catalogue embarqué dans l'appli (mis à jour avec mHUB).
-    static func load() -> Catalog {
-        guard let url = Bundle.main.url(forResource: "catalogue", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let c = try? JSONDecoder().decode(Catalog.self, from: data) else {
-            return Catalog(version: 0, teamID: "35KLMK53PN", owner: "starbudweiser", apps: [])
-        }
+    static let remoteURL = URL(string: "https://raw.githubusercontent.com/starbudweiser/mHUB/main/Resources/catalogue.json")!
+    private static let cacheKey = "catalogCache"
+
+    private static func decode(_ data: Data) -> Catalog? {
+        guard let c = try? JSONDecoder().decode(Catalog.self, from: data), !c.apps.isEmpty else { return nil }
         return c
+    }
+
+    /// Catalogue embarqué dans l'appli (secours hors ligne).
+    static func embedded() -> Catalog {
+        if let url = Bundle.main.url(forResource: "catalogue", withExtension: "json"),
+           let data = try? Data(contentsOf: url), let c = decode(data) { return c }
+        return Catalog(version: 0, teamID: "35KLMK53PN", owner: "starbudweiser", apps: [])
+    }
+
+    /// Le plus récent des deux : copie téléchargée la dernière fois, ou catalogue embarqué.
+    static func load() -> Catalog {
+        let emb = embedded()
+        if let data = UserDefaults.standard.data(forKey: cacheKey), let c = decode(data), c.version > emb.version {
+            return Catalog(version: c.version, teamID: emb.teamID, owner: emb.owner, apps: c.apps)
+        }
+        return emb
+    }
+
+    /// Télécharge le catalogue publié sur GitHub ; renvoie nil s'il n'est pas plus récent que `current`.
+    /// L'équipe de signature et le propriétaire restent ceux de l'appli : le catalogue distant ne peut pas les changer.
+    static func fetchNewer(than current: Catalog) async -> Catalog? {
+        var req = URLRequest(url: remoteURL)
+        req.setValue("mHUB", forHTTPHeaderField: "User-Agent")
+        req.cachePolicy = .reloadIgnoringLocalCacheData
+        req.timeoutInterval = 20
+        guard let (data, resp) = try? await URLSession.shared.data(for: req),
+              (resp as? HTTPURLResponse)?.statusCode == 200,
+              let c = decode(data), c.version > current.version else { return nil }
+        UserDefaults.standard.set(data, forKey: cacheKey)
+        return Catalog(version: c.version, teamID: current.teamID, owner: current.owner, apps: c.apps)
     }
 }
 

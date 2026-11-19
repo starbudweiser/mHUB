@@ -63,7 +63,8 @@ DESC = {
 }
 # Catégories corrigées
 CAT = {"mSTICK":"files","mPARLE":"ai","TESSERaCT":"virt","mTAPES":"creative"}
-out = {"version": 1, "teamID": "35KLMK53PN", "owner": "starbudweiser", "apps": []}
+import time
+out = {"version": int(time.time()), "teamID": "35KLMK53PN", "owner": "starbudweiser", "apps": []}
 for id_, bid, repo, cat, d, st in A:
     if not repo: continue   # le Hub ne liste que les applis à dépôt public
     d = DESC.get(id_) or d or G

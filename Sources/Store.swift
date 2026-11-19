@@ -44,7 +44,7 @@ enum Prefs {
 final class Store: ObservableObject {
     static let shared = Store()
 
-    let catalog = Catalog.load()
+    @Published private(set) var catalog = Catalog.load()
     @Published private(set) var installed: [String: InstalledApp] = [:]
     @Published private(set) var releases: [String: Release] = Prefs.releasesCache
     @Published private(set) var tasks: [String: TaskState] = [:]
@@ -121,6 +121,7 @@ final class Store: ObservableObject {
         checking = true
         defer { checking = false }
         scan()
+        if let c = await Catalog.fetchNewer(than: catalog) { catalog = c }
         await withTaskGroup(of: (String, Release?).self) { group in
             for a in apps {
                 guard let repo = a.repo else { continue }

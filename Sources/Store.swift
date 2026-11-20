@@ -169,7 +169,8 @@ final class Store: ObservableObject {
             do { notarized = try await Verify.app(app, bundleId: a.bundleId, teamID: catalog.teamID) }
             catch { try? FileManager.default.removeItem(at: work); throw error }
             pending[a.id] = Pending(app: app, work: work, notarized: notarized)
-            if isRunning(a) { tasks[a.id] = .waitQuit; return }
+            // Clic explicite sur « Mettre à jour » : l'appli ouverte est quittée poliment puis relancée (jamais en automatique : cf. installPendingAutomatically).
+            if isRunning(a) { quitAndUpdate(a); return }
             try await swap(a, relaunch: false)
         } catch {
             tasks[a.id] = .failed(error.localizedDescription)

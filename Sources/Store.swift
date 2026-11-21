@@ -15,8 +15,10 @@ struct InstalledApp { let url: URL; let version: String }
 
 enum Prefs {
     static let d = UserDefaults.standard
+    /// Édition de test (fr.stephan.mhub.test) : données à part, dossier d'installation isolé, ne voit que ses propres applis.
+    static let isTest = Bundle.main.bundleIdentifier?.hasSuffix(".test") ?? false
     static var autoInstall: Bool {
-        get { d.object(forKey: "autoInstall") as? Bool ?? !(Bundle.main.bundleIdentifier?.hasSuffix(".dev") ?? false) }
+        get { d.object(forKey: "autoInstall") as? Bool ?? !((Bundle.main.bundleIdentifier?.hasSuffix(".dev") ?? false) || isTest) }
         set { d.set(newValue, forKey: "autoInstall") }
     }
     static var dailyCheck: Bool {
@@ -34,6 +36,11 @@ enum Prefs {
     static var installDir: URL {
         get {
             if let p = d.string(forKey: "installDir") { return URL(fileURLWithPath: p) }
+            if isTest {
+                let u = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/mHUB Test/Applications")
+                try? FileManager.default.createDirectory(at: u, withIntermediateDirectories: true)
+                return u
+            }
             return FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Applications/Applications Personnelles")
         }
         set { d.set(newValue.path, forKey: "installDir") }
@@ -81,6 +88,7 @@ final class Store: ObservableObject {
 
     private var searchDirs: [URL] {
         let home = FileManager.default.homeDirectoryForCurrentUser
+        if Prefs.isTest { return [Prefs.installDir] }
         return [Prefs.installDir, home.appendingPathComponent("Applications/Applications Personnelles"),
                 home.appendingPathComponent("Applications"), URL(fileURLWithPath: "/Applications")]
     }

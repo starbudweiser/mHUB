@@ -13,6 +13,8 @@ struct RootView: View {
     @State private var search = ""
     @State private var sortByStatus = false
     @State private var selectedID: String?
+    @State private var splash = false
+    @ObservedObject private var trigger = SplashTrigger.shared
 
     var body: some View {
         VStack(spacing: 0) {
@@ -49,8 +51,11 @@ struct RootView: View {
             }
         }
         .background(T.bg)
+        .ignoresSafeArea(.container, edges: .top)
+        .overlay { if splash { SplashView { withAnimation(.easeOut(duration: 0.2)) { splash = false } }.ignoresSafeArea().transition(.opacity) } }
+        .onChange(of: trigger.token) { _, _ in splash = true }
         .foregroundStyle(T.text)
-        .onAppear { if selectedID == nil { selectedID = list.first?.id } }
+        .onAppear { if trigger.token > 0 { splash = true }; if selectedID == nil { selectedID = list.first?.id } }
     }
 
     private var selectedApp: CatalogApp? { store.apps.first { $0.id == selectedID } }
@@ -106,7 +111,7 @@ struct TopBar: View {
                 .buttonStyle(HubButtonStyle()).disabled(store.checking)
             Button { Windows.showSettings() } label: { Image(systemName: "gearshape") }.buttonStyle(HubButtonStyle())
         }
-        .padding(.leading, 84).padding(.trailing, 16).padding(.top, 10).padding(.bottom, 12)
+        .padding(.leading, 84).padding(.trailing, 16).padding(.top, 6).padding(.bottom, 10)
     }
 }
 

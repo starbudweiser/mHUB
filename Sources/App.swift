@@ -21,6 +21,7 @@ enum Windows {
             main = w
         }
         main?.present()
+        SplashTrigger.shared.fire()
     }
 
     static func showSettings() {

@@ -13,7 +13,7 @@ final class SelfUpdate: ObservableObject {
 
     var currentVersion: String { Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0" }
     /// L'édition de développement ne s'écrase jamais avec la version publiée.
-    var isDev: Bool { Bundle.main.bundleIdentifier?.hasSuffix(".dev") == true }
+    var isDev: Bool { Bundle.main.bundleIdentifier?.hasSuffix(".dev") == true || Prefs.isTest }
 
     var message: String? {
         switch state {

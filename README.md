@@ -6,6 +6,8 @@
 
 Made by Starbudweiser & Claude Code (Anthropic). MIT License. Provided as is, without warranty.
 
+![The mHUB library: every DESKTOP MAC TOOLKIT app with its update status, Open and Settings buttons, and the details of the selected app.](docs/screenshot.png)
+
 ## Fonctionnement
 
 - Catalogue embarqué (`Resources/catalogue.json`, généré par `tools/gen_catalogue.py`).

@@ -16,3 +16,7 @@ Made by Starbudweiser & Claude Code (Anthropic). MIT License. Provided as is, wi
 - Compilation : `./build_app.sh` (version locale installée) ou `DEV=1 ./build_app.sh` (édition de développement `fr.stephan.mhub.dev`).
 
 Voir `ARCHITECTURE.md`.
+
+## Support / Soutenir
+
+mHUB is free. If it is useful to you, you can support the project (optional): [GitHub Sponsors](https://github.com/sponsors/starbudweiser). / mHUB est gratuit ; s'il vous est utile, vous pouvez soutenir le projet (facultatif).

@@ -383,6 +383,9 @@ struct SettingsView: View {
                     Button(L.t("set.selfUpdate.btn")) { Task { await selfUpdate.check() } }.buttonStyle(HubButtonStyle(small: true))
                 }
             }
+            row(L.t("about.support"), L.t("set.support.help")) {
+                Button("♥ " + L.t("set.support")) { NSWorkspace.shared.open(Support.url) }.buttonStyle(HubButtonStyle(small: true))
+            }
             row("mHUB \(selfUpdate.currentVersion)", "DESKTOP MAC TOOLKIT") {
                 Button(L.t("set.about")) { About.show() }.buttonStyle(HubButtonStyle(small: true))
             }

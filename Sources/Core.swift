@@ -119,6 +119,11 @@ struct Release: Equatable, Codable {
     }
 }
 
+enum Support {
+    /// Page de soutien (GitHub Sponsors) : facultatif, aucune fonction n'en dépend.
+    static let url = URL(string: "https://github.com/sponsors/starbudweiser")!
+}
+
 enum Sh {
     /// Lance une commande ; renvoie code de sortie et sortie (standard + erreur).
     static func run(_ exe: String, _ args: [String]) async -> (code: Int32, out: String) {

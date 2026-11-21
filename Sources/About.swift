@@ -35,6 +35,17 @@ enum About {
         return f
     }
 
+    private final class Opener: NSObject { @objc func go() { NSWorkspace.shared.open(Support.url) } }
+    private static let opener = Opener()
+
+    /// Lien discret vers la page de soutien.
+    private static func supportButton() -> NSButton {
+        let b = NSButton(title: "♥ " + L.t("about.support"), target: opener, action: #selector(Opener.go))
+        b.isBordered = false
+        b.attributedTitle = NSAttributedString(string: "♥ " + L.t("about.support"), attributes: [.font: NSFont.systemFont(ofSize: 12, weight: .medium), .foregroundColor: T.accNS])
+        return b
+    }
+
     private static func makeWindow() -> NSWindow {
         let info = Bundle.main.infoDictionary ?? [:]
         let version = info["CFBundleShortVersionString"] as? String ?? "?"
@@ -53,6 +64,7 @@ enum About {
             label(L.t("about.license")),
             label(L.t("about.disclaimer"), secondary: true),
             label(L.t("about.credit"), secondary: true),
+            supportButton(),
         ]
         let stack = NSStackView(views: views)
         stack.orientation = .vertical

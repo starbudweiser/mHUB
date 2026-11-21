@@ -29,6 +29,7 @@ enum T {
     static func dynNS(_ dark: UInt32, _ light: UInt32) -> NSColor {
         NSColor(name: nil) { ap in NSColor(hex: ap.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? dark : light) }
     }
+    static let accNS = dynNS(0x0a84ff, 0x6a5af0)
     static let bgNS = dynNS(0x131316, 0xf1f1f5)
     static let textNS = dynNS(0xf5f5f7, 0x1c1c22)
     static let text2NS = dynNS(0x98989f, 0x6b6b78)

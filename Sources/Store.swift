@@ -62,8 +62,10 @@ final class Store: ObservableObject {
 
     func start() {
         scan()
-        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didLaunchApplicationNotification, object: nil, queue: .main) { _ in Task { @MainActor in Store.shared.refreshRunning() } }
-        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didTerminateApplicationNotification, object: nil, queue: .main) { _ in Task { @MainActor in Store.shared.refreshRunning() } }
+        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didLaunchApplicationNotification, object: nil, queue: .main) { _ in Task { @MainActor in Store.shared.refreshRunning(); Store.shared.scan() } }
+        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didTerminateApplicationNotification, object: nil, queue: .main) { _ in Task { @MainActor in Store.shared.refreshRunning(); Store.shared.scan() } }
+        // Une appli qui se met à jour elle-même change sur le disque sans que mHUB le sache : on relit à chaque retour au premier plan.
+        NotificationCenter.default.addObserver(forName: NSApplication.didBecomeActiveNotification, object: nil, queue: .main) { _ in Task { @MainActor in Store.shared.scan() } }
         refreshRunning()
         timer = Timer.scheduledTimer(withTimeInterval: 1800, repeats: true) { _ in Task { @MainActor in Store.shared.tick() } }
         tick()
@@ -89,8 +91,10 @@ final class Store: ObservableObject {
         for dir in searchDirs {
             let items = (try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil)) ?? []
             for u in items where u.pathExtension == "app" {
-                guard let b = Bundle(url: u), let id = b.bundleIdentifier, wanted.contains(id), found[id] == nil else { continue }
-                found[id] = InstalledApp(url: u, version: b.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "?")
+                // Lecture directe de l'Info.plist : Bundle(url:) garde en mémoire la version lue la première fois.
+                guard let info = NSDictionary(contentsOf: u.appendingPathComponent("Contents/Info.plist")),
+                      let id = info["CFBundleIdentifier"] as? String, wanted.contains(id), found[id] == nil else { continue }
+                found[id] = InstalledApp(url: u, version: info["CFBundleShortVersionString"] as? String ?? "?")
             }
         }
         installed = found

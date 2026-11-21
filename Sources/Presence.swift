@@ -55,6 +55,7 @@ final class Presence: NSObject {
 
     @objc private func clicked() {
         guard let b = item?.button else { return }
+        Store.shared.scan()   // les applis ont pu se mettre à jour seules depuis la dernière lecture
         makeMenu().popUp(positioning: nil, at: NSPoint(x: 0, y: b.isFlipped ? b.bounds.maxY + 4 : -4), in: b)
     }
 

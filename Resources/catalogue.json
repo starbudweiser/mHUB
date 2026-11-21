@@ -1,8 +1,34 @@
 {
- "version": 1795122510,
+ "version": 1795257309,
  "teamID": "35KLMK53PN",
  "owner": "starbudweiser",
  "apps": [
+  {
+   "id": "mFRAMES",
+   "name": "mFRAMES",
+   "bundleId": "fr.stephan.mframes",
+   "category": "creative",
+   "desc": {
+    "fr": "Review et annotation en direct avec un client : vidéo, images, PDF, chiffré de bout en bout.",
+    "en": "Live review and annotation with a client: video, images, PDF, end-to-end encrypted.",
+    "es": "Revisión y anotación en directo con un cliente: vídeo, imágenes, PDF, cifrado de extremo a extremo.",
+    "it": "Revisione e annotazione in diretta con un cliente: video, immagini, PDF, cifratura end-to-end."
+   },
+   "repo": "mFRAMES"
+  },
+  {
+   "id": "mFONTS",
+   "name": "mFONTS",
+   "bundleId": "fr.stephan.mfonts",
+   "category": "creative",
+   "desc": {
+    "fr": "Gestionnaire de polices : bibliothèques, collections, activation à la demande, aperçu en direct.",
+    "en": "Font manager: libraries, collections, on-demand activation, live preview.",
+    "es": "Gestor de fuentes: bibliotecas, colecciones, activación bajo demanda, vista previa en directo.",
+    "it": "Gestore di font: librerie, raccolte, attivazione su richiesta, anteprima dal vivo."
+   },
+   "repo": "mFONTS"
+  },
   {
    "id": "ARCHiVES",
    "name": "ARCHiVES",

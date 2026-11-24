@@ -77,6 +77,9 @@ for id_, bid, repo, cat, d, st in A:
     if st: e["settings"] = st
     out["apps"].append(e)
 path = os.path.join(os.path.dirname(__file__), "..", "Resources", "catalogue.json")
+# Les applis découvertes automatiquement (tools/decouvrir.py) sont conservées.
+try: out["apps"] += [a for a in json.load(open(path))["apps"] if a.get("auto")]
+except Exception: pass
 # La version ne change que si le contenu change (sinon chaque compilation salirait le dépôt).
 try:
     old = json.load(open(path))

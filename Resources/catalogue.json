@@ -1,5 +1,5 @@
 {
- "version": 1795257309,
+ "version": 1795551155,
  "teamID": "35KLMK53PN",
  "owner": "starbudweiser",
  "apps": [
@@ -371,6 +371,34 @@
     "it": "Browser per macOS che qualsiasi IA compatibile con MCP pilota del tutto: schede, lettura, clic, digitazione, caricamenti di qualsiasi dimensione, accesso con il portachiavi, modalità iPhone per sito. La vedi lavorare in una finestra reale."
    },
    "repo": "wCLAUDE"
+  },
+  {
+   "id": "mCASTING",
+   "name": "mCASTING",
+   "bundleId": "fr.stephan.mcasting",
+   "category": "system",
+   "desc": {
+    "fr": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS).",
+    "en": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS).",
+    "es": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS).",
+    "it": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS)."
+   },
+   "repo": "mCASTING",
+   "auto": true
+  },
+  {
+   "id": "mSLICE",
+   "name": "mSLICE",
+   "bundleId": "fr.stephan.mslice",
+   "category": "system",
+   "desc": {
+    "fr": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT.",
+    "en": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT.",
+    "es": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT.",
+    "it": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT."
+   },
+   "repo": "mSLICE",
+   "auto": true
   }
  ]
 }

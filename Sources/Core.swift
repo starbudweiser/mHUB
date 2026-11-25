@@ -7,11 +7,13 @@ struct CatalogApp: Codable, Identifiable, Hashable {
     let name: String
     let bundleId: String
     let category: String
+    var cats: [String]?   // catégories (plusieurs possibles) ; `category` reste pour les mHUB plus anciens
     var repo: String?
     let desc: [String: String]
     var settings: Launch?
     var presence: Bool?
 
+    var allCats: [String] { cats ?? [category] }
     var text: String { desc[L.lang] ?? desc["en"] ?? "" }
 }
 
@@ -21,7 +23,7 @@ struct Catalog: Codable {
     let owner: String
     let apps: [CatalogApp]
 
-    static let categories = ["system", "files", "creative", "comms", "ai", "virt"]
+    static let categories = ["system", "files", "creative", "video", "games", "comms", "ai", "virt"]
 
     static let remoteURL = URL(string: "https://raw.githubusercontent.com/starbudweiser/mHUB/main/Resources/catalogue.json")!
     private static let cacheKey = "catalogCache"

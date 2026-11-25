@@ -68,7 +68,7 @@ struct RootView: View {
             case .installed: if store.installed[a.bundleId] == nil { return false }
             case .updates: if case .update = store.status(a) {} else { return false }
             case .notInstalled: if store.installed[a.bundleId] != nil { return false }
-            case .category(let c): if a.category != c { return false }
+            case .category(let c): if !a.allCats.contains(c) { return false }
             }
             return q.isEmpty || a.name.lowercased().contains(q) || a.text.lowercased().contains(q)
         }
@@ -131,7 +131,7 @@ struct Sidebar: View {
             if !store.activeTasks.isEmpty { item(L.t("nav.activity"), .activity, store.activeTasks.count) }
             header(L.t("nav.categories"))
             ForEach(Catalog.categories, id: \.self) { c in
-                item(L.t("cat." + c), .category(c), store.apps.filter { $0.category == c }.count)
+                item(L.t("cat." + c), .category(c), store.apps.filter { $0.allCats.contains(c) }.count)
             }
             Spacer()
             VStack(alignment: .center, spacing: 6) {
@@ -197,7 +197,7 @@ struct AppCard: View {
                         StatusTag(app: app)
                     }
                 }
-                Text(app.text).font(.system(size: 12)).foregroundStyle(T.text2).lineLimit(5, reservesSpace: true)
+                Text(app.text).font(.system(size: 12)).foregroundStyle(selected ? T.selText2 : T.text2).lineLimit(5, reservesSpace: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Spacer(minLength: 0)
                 Actions(app: app, compact: true)
@@ -293,13 +293,13 @@ struct DetailView: View {
                 }
                 Text(a.text).font(.system(size: 13)).foregroundStyle(T.text2).fixedSize(horizontal: false, vertical: true)
                 VStack(spacing: 0) {
-                    kv(L.t("detail.category"), L.t("cat." + a.category))
+                    kv(L.t("detail.category"), a.allCats.map { L.t("cat." + $0) }.joined(separator: ", "))
                     kv(L.t("detail.installed"), store.installed[a.bundleId]?.version ?? L.t("detail.none"))
                     kv(L.t("detail.latest"), store.releases[a.id].map { $0.version } ?? L.t("detail.none"))
                     kv(L.t("detail.size"), store.releases[a.id].map { formatSize($0.size) } ?? L.t("detail.none"))
                     kv(L.t("detail.folder"), store.installed[a.bundleId]?.url.deletingLastPathComponent().lastPathComponent ?? L.t("detail.none"))
                 }
-                Spacer()
+                PreviewImage(appID: a.id).frame(maxWidth: .infinity, maxHeight: .infinity)
                 if store.installed[a.bundleId] != nil {
                     HStack(spacing: 8) {
                         if store.isRunning(a) { Button(L.t("btn.quit")) { store.quit(a) }.buttonStyle(HubButtonStyle(small: true)) }
@@ -315,6 +315,7 @@ struct DetailView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding(16)
         .background(T.card, in: RoundedRectangle(cornerRadius: T.rBox))
+        .clipShape(RoundedRectangle(cornerRadius: T.rBox))
     }
 
     private func kv(_ k: String, _ v: String) -> some View {

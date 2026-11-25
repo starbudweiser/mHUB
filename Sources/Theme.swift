@@ -34,6 +34,20 @@ enum T {
     static let textNS = dynNS(0xf5f5f7, 0x1c1c22)
     static let text2NS = dynNS(0x98989f, 0x6b6b78)
 
+    /// Mélange deux couleurs hexadécimales (t = part de la seconde).
+    static func mix(_ a: UInt32, _ b: UInt32, _ t: Double) -> UInt32 {
+        func ch(_ s: Int) -> UInt32 {
+            let x = Double((a >> s) & 0xff), y = Double((b >> s) & 0xff)
+            return UInt32((x + (y - x) * t).rounded())
+        }
+        return ch(16) << 16 | ch(8) << 8 | ch(0)
+    }
+    // Carte sélectionnée : fond teinté (bleu en sombre, sable en clair) et couleurs accordées.
+    static let sel = dyn(mix(0x232327, 0x0a84ff, 0.26), mix(0xffffff, 0xd8c59b, 0.5))
+    static let selCtl = dyn(mix(0x232327, 0x0a84ff, 0.38), mix(0xffffff, 0xd8c59b, 0.78))
+    static let selText2 = dyn(mix(0x98989f, 0xa8d0ff, 0.55), 0x6b5e45)
+    static let selOk = dyn(0x5fe08a, 0x1f8a4c)
+
     static let rBox: CGFloat = 20     // arrondi des cartes et panneaux
     static let rCtl: CGFloat = 12     // arrondi des boutons et champs
 }
@@ -50,6 +64,7 @@ struct HubButtonStyle: ButtonStyle {
     var small = false
     var fill = false
     @Environment(\.isEnabled) private var enabled
+    @Environment(\.onSelectedCard) private var onSel
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -58,7 +73,7 @@ struct HubButtonStyle: ButtonStyle {
             .frame(maxWidth: fill ? .infinity : nil, alignment: .center)
             .padding(.horizontal, small ? 11 : 14).padding(.vertical, small ? 5 : 7)
             .foregroundStyle(kind == .primary ? Color.white : (kind == .ghost ? T.text2 : T.text))
-            .background(kind == .primary ? T.acc : (kind == .ghost ? Color.clear : T.ctl), in: RoundedRectangle(cornerRadius: T.rCtl))
+            .background(kind == .primary ? T.acc : (kind == .ghost ? Color.clear : (onSel ? T.selCtl : T.ctl)), in: RoundedRectangle(cornerRadius: T.rCtl))
             .opacity(enabled ? (configuration.isPressed ? 0.75 : 1) : 0.4)
             .contentShape(RoundedRectangle(cornerRadius: T.rCtl))
     }
@@ -68,13 +83,19 @@ struct Pill: View {
     enum Tone { case neutral, ok, warn, bad }
     let text: String
     var tone: Tone = .neutral
+    @Environment(\.onSelectedCard) private var onSel
     var body: some View {
-        let c: Color = tone == .ok ? T.ok : tone == .warn ? T.warn : tone == .bad ? T.bad : T.text2
+        let c: Color = tone == .ok ? (onSel ? T.selOk : T.ok) : tone == .warn ? T.warn : tone == .bad ? T.bad : T.text2
         Text(text).font(.system(size: 10.5, weight: .semibold)).lineLimit(1)
             .padding(.horizontal, 8).padding(.vertical, 2)
             .foregroundStyle(c)
-            .background(tone == .neutral ? T.ctl : c.opacity(0.22), in: Capsule())
+            .background(tone == .neutral ? (onSel ? T.selCtl : T.ctl) : c.opacity(onSel ? 0.28 : 0.22), in: Capsule())
     }
+}
+
+private struct OnSelectedCardKey: EnvironmentKey { static let defaultValue = false }
+extension EnvironmentValues {
+    var onSelectedCard: Bool { get { self[OnSelectedCardKey.self] } set { self[OnSelectedCardKey.self] = newValue } }
 }
 
 struct Card<Content: View>: View {
@@ -82,8 +103,8 @@ struct Card<Content: View>: View {
     @ViewBuilder var content: Content
     var body: some View {
         content.padding(12)
-            .background(T.card, in: RoundedRectangle(cornerRadius: T.rBox))
-            .overlay(RoundedRectangle(cornerRadius: T.rBox).stroke(selected ? T.acc : .clear, lineWidth: 2))
+            .environment(\.onSelectedCard, selected)
+            .background(selected ? T.sel : T.card, in: RoundedRectangle(cornerRadius: T.rBox))
     }
 }
 

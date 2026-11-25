@@ -8,6 +8,8 @@ OWNER, TOPIC = "starbudweiser", "desktop-mac-toolkit"
 PATH = os.path.join(os.path.dirname(__file__), "..", "Resources", "catalogue.json")
 CATS = {"system", "files", "creative", "video", "games", "comms", "ai", "virt"}
 
+TRAD = json.load(open(os.path.join(os.path.dirname(__file__), "descriptions_auto.json")))  # traductions rédigées à la main
+
 def gh(*a):
     r = subprocess.run(["gh", "api", *a], capture_output=True, text=True)
     return json.loads(r.stdout) if r.returncode == 0 and r.stdout.strip() else None
@@ -37,7 +39,7 @@ def bundle_id(repo):
     return None
 
 def main():
-    cat = json.load(open(PATH))
+    cat = json.load(open(PATH)); orig = json.loads(json.dumps(cat["apps"]))
     manuels = {a["id"].lower() for a in cat["apps"] if not a.get("auto")}
     avant = [a for a in cat["apps"] if a.get("auto")]
     gardees = [a for a in cat["apps"] if not a.get("auto")]
@@ -52,12 +54,13 @@ def main():
             if not b: print(f"  ignoré {n} : identifiant de paquet introuvable", file=sys.stderr); continue
             d = (r.get("description") or "Application du Desktop Mac Toolkit.").strip()
             e = {"id": n, "name": n, "bundleId": b, "desc": dict.fromkeys(("fr", "en", "es", "it"), d), "repo": n, "auto": True}
+        if n in TRAD: e["desc"] = TRAD[n]
         cs = [t[5:] for t in r.get("topics", []) if t.startswith("mhub-") and t[5:] in CATS]
         e["cats"] = cs or ["system"]
         e["category"] = next((c for c in cs if c in ("system", "files", "creative", "comms", "ai", "virt")), "creative" if cs else "system")
         nouveaux.append(e)
     apres = gardees + sorted(nouveaux, key=lambda a: a["id"].lower())
-    if apres == cat["apps"]:
+    if apres == orig:
         print("Découverte : rien de nouveau."); return
     cat["apps"] = apres; cat["version"] = max(int(time.time()), cat["version"] + 1)
     json.dump(cat, open(PATH, "w"), ensure_ascii=False, indent=1)

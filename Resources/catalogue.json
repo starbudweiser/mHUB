@@ -1,5 +1,5 @@
 {
- "version": 1795600129,
+ "version": 1795600375,
  "teamID": "35KLMK53PN",
  "owner": "starbudweiser",
  "apps": [
@@ -387,10 +387,10 @@
    "bundleId": "fr.stephan.mcasting",
    "category": "creative",
    "desc": {
-    "fr": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS).",
-    "en": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS).",
-    "es": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS).",
-    "it": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS)."
+    "fr": "Casting de voix IA en local pour tes projets de production : bibliothèque de voix, clonage, casting par projet, serveur MCP pour les IA.",
+    "en": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server for AI agents.",
+    "es": "Casting de voces con IA en local para tus proyectos de producción: biblioteca de voces, clonación, casting por proyecto, servidor MCP para IA.",
+    "it": "Casting di voci IA in locale per i tuoi progetti di produzione: libreria di voci, clonazione, casting per progetto, server MCP per le IA."
    },
    "repo": "mCASTING",
    "auto": true,
@@ -405,10 +405,10 @@
    "bundleId": "fr.stephan.mslice",
    "category": "creative",
    "desc": {
-    "fr": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT.",
-    "en": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT.",
-    "es": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT.",
-    "it": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT."
+    "fr": "Découpeur audio et vidéo rapide : marque l'entrée et la sortie avec I et O, garde plusieurs morceaux, exporte sans réencoder.",
+    "en": "Fast audio/video trimmer: mark in/out with I and O, keep several pieces, export without re-encoding.",
+    "es": "Recortador de audio y vídeo rápido: marca entrada y salida con I y O, conserva varios fragmentos, exporta sin recodificar.",
+    "it": "Taglio audio e video veloce: segna ingresso e uscita con I e O, tieni più pezzi, esporta senza ricodificare."
    },
    "repo": "mSLICE",
    "auto": true,
@@ -421,10 +421,10 @@
    "name": "mTALKIE",
    "bundleId": "fr.stephan.mtalkie",
    "desc": {
-    "fr": "Extract, play and export the voice lines of LucasArts SCUMM talkie CD games (.SOU, .SO3, .SOG, .SOF) on macOS.",
-    "en": "Extract, play and export the voice lines of LucasArts SCUMM talkie CD games (.SOU, .SO3, .SOG, .SOF) on macOS.",
-    "es": "Extract, play and export the voice lines of LucasArts SCUMM talkie CD games (.SOU, .SO3, .SOG, .SOF) on macOS.",
-    "it": "Extract, play and export the voice lines of LucasArts SCUMM talkie CD games (.SOU, .SO3, .SOG, .SOF) on macOS."
+    "fr": "Extrait, écoute et exporte les répliques parlées des jeux LucasArts SCUMM sur CD (.SOU, .SO3, .SOG, .SOF).",
+    "en": "Extract, play and export the voice lines of LucasArts SCUMM talkie CD games (.SOU, .SO3, .SOG, .SOF).",
+    "es": "Extrae, reproduce y exporta las voces de los juegos LucasArts SCUMM en CD (.SOU, .SO3, .SOG, .SOF).",
+    "it": "Estrae, riproduce ed esporta le voci dei giochi LucasArts SCUMM su CD (.SOU, .SO3, .SOG, .SOF)."
    },
    "repo": "mTALKIE",
    "auto": true,

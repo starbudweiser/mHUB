@@ -1,5 +1,5 @@
 {
- "version": 1795551155,
+ "version": 1795600129,
  "teamID": "35KLMK53PN",
  "owner": "starbudweiser",
  "apps": [
@@ -14,6 +14,9 @@
     "es": "Revisión y anotación en directo con un cliente: vídeo, imágenes, PDF, cifrado de extremo a extremo.",
     "it": "Revisione e annotazione in diretta con un cliente: video, immagini, PDF, cifratura end-to-end."
    },
+   "cats": [
+    "video"
+   ],
    "repo": "mFRAMES"
   },
   {
@@ -105,6 +108,9 @@
     "es": "Explorador de medios y transcodificador para editores: valoraciones, palabras clave, marcadores y subclips, transcodificación rápida, exportación a DaVinci Resolve, Final Cut Pro y Premiere Pro. Nunca modifica los originales.",
     "it": "Esplora media e transcodifica per montatori: valutazioni, parole chiave, marcatori e subclip, transcodifica rapida, esportazione verso DaVinci Resolve, Final Cut Pro e Premiere Pro. Non tocca mai i file originali."
    },
+   "cats": [
+    "video"
+   ],
    "repo": "KyNEDIT"
   },
   {
@@ -318,6 +324,9 @@
     "es": "Grabador de pantalla nativo que edita tus demos por ti. Cualquier IA puede controlarlo mediante MCP (10 herramientas): graba, anuncia sus acciones y edita la toma.",
     "it": "Registratore di schermo nativo che monta le tue demo da solo. Qualsiasi IA può pilotarlo tramite MCP (10 strumenti): registra, annuncia le sue azioni e monta la ripresa."
    },
+   "cats": [
+    "video"
+   ],
    "repo": "mTAPES"
   },
   {
@@ -376,7 +385,7 @@
    "id": "mCASTING",
    "name": "mCASTING",
    "bundleId": "fr.stephan.mcasting",
-   "category": "system",
+   "category": "creative",
    "desc": {
     "fr": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS).",
     "en": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS).",
@@ -384,13 +393,17 @@
     "it": "Local AI voice casting for production projects: voice library, cloning, per-project casting, MCP server (macOS)."
    },
    "repo": "mCASTING",
-   "auto": true
+   "auto": true,
+   "cats": [
+    "games",
+    "video"
+   ]
   },
   {
    "id": "mSLICE",
    "name": "mSLICE",
    "bundleId": "fr.stephan.mslice",
-   "category": "system",
+   "category": "creative",
    "desc": {
     "fr": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT.",
     "en": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT.",
@@ -398,7 +411,27 @@
     "it": "Fast audio/video trimmer for macOS: mark in/out with I and O, keep several pieces, export without re-encoding. Part of the DESKTOP MAC TOOLKIT."
    },
    "repo": "mSLICE",
-   "auto": true
+   "auto": true,
+   "cats": [
+    "video"
+   ]
+  },
+  {
+   "id": "mTALKIE",
+   "name": "mTALKIE",
+   "bundleId": "fr.stephan.mtalkie",
+   "desc": {
+    "fr": "Extract, play and export the voice lines of LucasArts SCUMM talkie CD games (.SOU, .SO3, .SOG, .SOF) on macOS.",
+    "en": "Extract, play and export the voice lines of LucasArts SCUMM talkie CD games (.SOU, .SO3, .SOG, .SOF) on macOS.",
+    "es": "Extract, play and export the voice lines of LucasArts SCUMM talkie CD games (.SOU, .SO3, .SOG, .SOF) on macOS.",
+    "it": "Extract, play and export the voice lines of LucasArts SCUMM talkie CD games (.SOU, .SO3, .SOG, .SOF) on macOS."
+   },
+   "repo": "mTALKIE",
+   "auto": true,
+   "cats": [
+    "games"
+   ],
+   "category": "creative"
   }
  ]
 }

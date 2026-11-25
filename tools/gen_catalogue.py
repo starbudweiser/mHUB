@@ -64,6 +64,7 @@ DESC = {
 "wCLAUDE": ("Navigateur macOS que n'importe quelle IA compatible MCP pilote entièrement : onglets, lecture, clics, saisie, envois de fichiers sans limite, connexion par le Trousseau, mode iPhone par site. Tu la regardes travailler dans une vraie fenêtre.","A macOS browser any MCP-compatible AI agent can fully drive: tabs, reading, clicks, typing, uploads of any size, Keychain sign-in, per-site iPhone mode. You watch it work in a real window.","Navegador de macOS que cualquier IA compatible con MCP controla por completo: pestañas, lectura, clics, escritura, subidas de cualquier tamaño, inicio de sesión con el llavero, modo iPhone por sitio. La ves trabajar en una ventana real.","Browser per macOS che qualsiasi IA compatibile con MCP pilota del tutto: schede, lettura, clic, digitazione, caricamenti di qualsiasi dimensione, accesso con il portachiavi, modalità iPhone per sito. La vedi lavorare in una finestra reale."),
 }
 # Catégories corrigées
+CATS = {"mFRAMES":["video"],"kYNEDIT":["video"],"mTAPES":["video"],"mSLICE":["video"],"mCASTING":["games","video"],"mTALKIE":["games"]}
 CAT = {"mSTICK":"files","mPARLE":"ai","TESSERaCT":"virt","mTAPES":"creative"}
 import time
 out = {"version": int(time.time()), "teamID": "35KLMK53PN", "owner": "starbudweiser", "apps": []}
@@ -73,6 +74,7 @@ for id_, bid, repo, cat, d, st in A:
     cat = CAT.get(id_, cat)
     e = {"id": id_, "name": id_, "bundleId": bid, "category": cat,
          "desc": dict(zip(("fr","en","es","it"), d))}
+    if id_ in CATS: e["cats"] = CATS[id_]
     if repo: e["repo"] = repo
     if st: e["settings"] = st
     out["apps"].append(e)

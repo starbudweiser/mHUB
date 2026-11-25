@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Découverte automatique : ajoute au catalogue les dépôts publics de starbudweiser portant le topic
 `desktop-mac-toolkit` et au moins une release avec un .zip. Retire les entrées automatiques qui ne qualifient plus.
-Les entrées rédigées à la main (gen_catalogue.py) ne sont jamais touchées. Topic facultatif `mhub-<catégorie>`
-(system, files, creative, comms, ai, virt) ; sinon « system ». Nécessite `gh` (connecté, ou GH_TOKEN)."""
+Les entrées rédigées à la main (gen_catalogue.py) ne sont jamais touchées. Topics facultatifs `mhub-<catégorie>` (plusieurs possibles)
+(system, files, creative, video, games, comms, ai, virt) ; sinon « system ». Nécessite `gh` (connecté, ou GH_TOKEN)."""
 import json, os, plistlib, subprocess, sys, base64, time
 OWNER, TOPIC = "starbudweiser", "desktop-mac-toolkit"
 PATH = os.path.join(os.path.dirname(__file__), "..", "Resources", "catalogue.json")
-CATS = {"system", "files", "creative", "comms", "ai", "virt"}
+CATS = {"system", "files", "creative", "video", "games", "comms", "ai", "virt"}
 
 def gh(*a):
     r = subprocess.run(["gh", "api", *a], capture_output=True, text=True)
@@ -51,8 +51,10 @@ def main():
             b = bundle_id(n)
             if not b: print(f"  ignoré {n} : identifiant de paquet introuvable", file=sys.stderr); continue
             d = (r.get("description") or "Application du Desktop Mac Toolkit.").strip()
-            c = next((t[5:] for t in r.get("topics", []) if t.startswith("mhub-") and t[5:] in CATS), "system")
-            e = {"id": n, "name": n, "bundleId": b, "category": c, "desc": dict.fromkeys(("fr", "en", "es", "it"), d), "repo": n, "auto": True}
+            e = {"id": n, "name": n, "bundleId": b, "desc": dict.fromkeys(("fr", "en", "es", "it"), d), "repo": n, "auto": True}
+        cs = [t[5:] for t in r.get("topics", []) if t.startswith("mhub-") and t[5:] in CATS]
+        e["cats"] = cs or ["system"]
+        e["category"] = next((c for c in cs if c in ("system", "files", "creative", "comms", "ai", "virt")), "creative" if cs else "system")
         nouveaux.append(e)
     apres = gardees + sorted(nouveaux, key=lambda a: a["id"].lower())
     if apres == cat["apps"]:

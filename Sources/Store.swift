@@ -33,6 +33,10 @@ enum Prefs {
         get { (d.data(forKey: "releasesCache")).flatMap { try? JSONDecoder().decode([String: Release].self, from: $0) } ?? [:] }
         set { d.set(try? JSONEncoder().encode(newValue), forKey: "releasesCache") }
     }
+    static var releaseEtags: [String: String] {
+        get { d.dictionary(forKey: "releaseEtags") as? [String: String] ?? [:] }
+        set { d.set(newValue, forKey: "releaseEtags") }
+    }
     static var installDir: URL {
         get {
             if let p = d.string(forKey: "installDir") { return URL(fileURLWithPath: p) }
@@ -134,15 +138,26 @@ final class Store: ObservableObject {
         defer { checking = false }
         scan()
         if let c = await Catalog.fetchNewer(than: catalog) { catalog = c }
-        await withTaskGroup(of: (String, Release?).self) { group in
+        var etags = Prefs.releaseEtags
+        var failures = 0
+        await withTaskGroup(of: (String, (release: Release?, etag: String?)?).self) { group in
             for a in apps {
                 guard let repo = a.repo else { continue }
                 let owner = catalog.owner
-                group.addTask { (a.id, try? await Release.fetch(owner: owner, repo: repo)) }
+                // Sans copie en cache, l'ETag ne sert à rien : on redemande la release complète.
+                let tag = releases[a.id] == nil ? nil : etags[a.id]
+                group.addTask { (a.id, try? await Release.fetchConditional(owner: owner, repo: repo, etag: tag)) }
             }
-            for await (id, r) in group { if let r { releases[id] = r } }
+            for await (id, r) in group {
+                guard let r else { failures += 1; continue }
+                if let rel = r.release { releases[id] = rel }
+                if let e = r.etag { etags[id] = e }
+            }
         }
-        lastCheck = Date(); Prefs.lastCheck = lastCheck; Prefs.releasesCache = releases
+        Prefs.releaseEtags = etags
+        // Si des dépôts n'ont pas répondu (limite de GitHub, réseau), on ne prétend pas avoir tout vérifié.
+        if failures == 0 { lastCheck = Date(); Prefs.lastCheck = lastCheck }
+        Prefs.releasesCache = releases
         installPendingAutomatically()
     }
 

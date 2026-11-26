@@ -104,12 +104,23 @@ struct Release: Equatable, Codable {
 
     /// Dernière release publique d'un dépôt GitHub.
     static func fetch(owner: String, repo: String) async throws -> Release {
+        guard let r = try await fetchConditional(owner: owner, repo: repo, etag: nil).release else { throw HubError.release }
+        return r
+    }
+
+    /// Avec l'ETag de la dernière réponse, GitHub répond 304 (sans compter dans la limite de 60 requêtes par heure
+    /// des appels anonymes) : `release` vaut alors nil et la copie en cache reste valable.
+    static func fetchConditional(owner: String, repo: String, etag: String?) async throws -> (release: Release?, etag: String?) {
         var req = URLRequest(url: URL(string: "https://api.github.com/repos/\(owner)/\(repo)/releases/latest")!)
         req.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
         req.setValue("mHUB", forHTTPHeaderField: "User-Agent")
         req.timeoutInterval = 20
+        req.cachePolicy = .reloadIgnoringLocalCacheData
+        if let etag { req.setValue(etag, forHTTPHeaderField: "If-None-Match") }
         let (data, resp): (Data, URLResponse)
         do { (data, resp) = try await URLSession.shared.data(for: req) } catch { throw HubError.network }
+        if (resp as? HTTPURLResponse)?.statusCode == 304 { return (nil, etag) }
+        let newTag = (resp as? HTTPURLResponse)?.value(forHTTPHeaderField: "ETag")
         guard (resp as? HTTPURLResponse)?.statusCode == 200,
               let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
               let tag = json["tag_name"] as? String else { throw HubError.release }
@@ -117,7 +128,7 @@ struct Release: Equatable, Codable {
         let pick = assets.first { ($0["name"] as? String ?? "").contains("arm64") } ?? assets.first
         guard let a = pick, let s = a["browser_download_url"] as? String, let url = URL(string: s) else { throw HubError.release }
         let date = (json["published_at"] as? String).flatMap { ISO8601DateFormatter().date(from: $0) }
-        return Release(tag: tag, version: VersionCompare.clean(tag), asset: url, size: (a["size"] as? NSNumber)?.int64Value ?? 0, date: date)
+        return (Release(tag: tag, version: VersionCompare.clean(tag), asset: url, size: (a["size"] as? NSNumber)?.int64Value ?? 0, date: date), newTag)
     }
 }
 

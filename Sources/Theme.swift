@@ -42,11 +42,13 @@ enum T {
         }
         return ch(16) << 16 | ch(8) << 8 | ch(0)
     }
-    // Carte sélectionnée : fond teinté (bleu en sombre, sable en clair) et couleurs accordées.
-    static let sel = dyn(mix(0x232327, 0x0a84ff, 0.26), mix(0xffffff, 0xd8c59b, 0.5))
-    static let selCtl = dyn(mix(0x232327, 0x0a84ff, 0.38), mix(0xffffff, 0xd8c59b, 0.78))
-    static let selText2 = dyn(mix(0x98989f, 0xa8d0ff, 0.55), 0x6b5e45)
-    static let selOk = dyn(0x5fe08a, 0x1f8a4c)
+    // Survol et sélection sans encadré ni teinte (Socle, règle du 26/11/2026) : seul le fond change,
+    // un cran (survol, surface-hover) ou deux (sélection, surface-selected) plus clair en sombre, plus foncé en clair.
+    static let hover = dyn(0x2c2c31, 0xf6f6f9)
+    static let sel = dyn(0x35353a, 0xe8e8ee)
+    static let selCtl = dyn(0x44444a, 0xdadae2)
+    static let selText2 = dyn(0xa4a4ab, 0x5f5f6b)
+    static let selOk = dyn(0x30d158, 0x2fb36a)
 
     static let rBox: CGFloat = 20     // arrondi des cartes et panneaux
     static let rCtl: CGFloat = 12     // arrondi des boutons et champs
@@ -93,6 +95,28 @@ struct Pill: View {
     }
 }
 
+/// Avancement dans la forme d'un petit bouton (même hauteur), rempli à mesure de la progression.
+struct ProgressPill: View {
+    let text: String
+    let progress: Double?
+    var body: some View {
+        Text(text)
+            .font(.system(size: 12, weight: .medium).monospacedDigit()).lineLimit(1)
+            .frame(maxWidth: .infinity).padding(.horizontal, 11).padding(.vertical, 5)
+            .foregroundStyle(T.text)
+            .background {
+                GeometryReader { g in
+                    ZStack(alignment: .leading) {
+                        T.ctl
+                        T.acc.opacity(0.55).frame(width: g.size.width * (progress ?? 1)).opacity(progress == nil ? 0.5 : 1)
+                    }
+                }
+                .clipShape(RoundedRectangle(cornerRadius: T.rCtl))
+                .animation(.linear(duration: 0.2), value: progress)
+            }
+    }
+}
+
 private struct OnSelectedCardKey: EnvironmentKey { static let defaultValue = false }
 extension EnvironmentValues {
     var onSelectedCard: Bool { get { self[OnSelectedCardKey.self] } set { self[OnSelectedCardKey.self] = newValue } }
@@ -101,10 +125,16 @@ extension EnvironmentValues {
 struct Card<Content: View>: View {
     var selected = false
     @ViewBuilder var content: Content
+    @State private var hovered = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     var body: some View {
         content.padding(12)
             .environment(\.onSelectedCard, selected)
-            .background(selected ? T.sel : T.card, in: RoundedRectangle(cornerRadius: T.rBox))
+            .background(selected ? T.sel : (hovered ? T.hover : T.card), in: RoundedRectangle(cornerRadius: T.rBox))
+            .contentShape(RoundedRectangle(cornerRadius: T.rBox))
+            .onHover { hovered = $0 }
+            .animation(reduceMotion ? nil : .easeOut(duration: 0.12), value: hovered)
+            .animation(reduceMotion ? nil : .easeOut(duration: 0.12), value: selected)
     }
 }
 

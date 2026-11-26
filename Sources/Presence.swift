@@ -92,7 +92,7 @@ final class Presence: NSObject {
         let store = Store.shared
         let menu = NSMenu()
         let installed = store.installedApps
-        let head = NSMenuItem(title: "mHUB — " + L.t("menu.summary", installed.count, store.updatable.count), action: nil, keyEquivalent: "")
+        let head = NSMenuItem(title: "mHUB — " + L.n("apps", installed.count) + " · " + L.n("upd", store.updatable.count), action: nil, keyEquivalent: "")
         head.isEnabled = false
         menu.addItem(head)
         menu.addItem(.separator())

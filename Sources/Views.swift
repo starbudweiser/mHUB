@@ -36,12 +36,23 @@ struct RootView: View {
                                 Button(sortByStatus ? L.t("sort.status") : L.t("sort.name")) { sortByStatus.toggle() }
                                     .buttonStyle(HubButtonStyle())
                             }
-                            ScrollView {
-                                LazyVGrid(columns: [GridItem(.adaptive(minimum: 230), spacing: 10)], spacing: 10) {
-                                    ForEach(list) { a in
-                                        AppCard(app: a, selected: selectedID == a.id).onTapGesture { selectedID = a.id }
+                            if list.isEmpty {
+                                // État vide : jamais une grille blanche.
+                                VStack(spacing: 10) {
+                                    Text(L.t("list.empty")).font(.system(size: 14, weight: .semibold))
+                                    if filter != .all || !search.isEmpty {
+                                        Button(L.t("list.showAll")) { filter = .all; search = "" }.buttonStyle(HubButtonStyle(small: true))
                                     }
-                                }.padding(.bottom, 6)
+                                }
+                                .foregroundStyle(T.text2).frame(maxWidth: .infinity, maxHeight: .infinity)
+                            } else {
+                                ScrollView {
+                                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 230), spacing: 10)], spacing: 10) {
+                                        ForEach(list) { a in
+                                            AppCard(app: a, selected: selectedID == a.id).onTapGesture { selectedID = a.id }
+                                        }
+                                    }.padding(.bottom, 6)
+                                }
                             }
                         }
                         DetailView(app: selectedApp).frame(width: 320)
@@ -135,7 +146,8 @@ struct Sidebar: View {
             }
             Spacer()
             VStack(alignment: .center, spacing: 6) {
-                Text(store.updatable.isEmpty ? L.t("upd.none") : L.t("upd.count", store.updatable.count)).font(.system(size: 13, weight: .semibold))
+                Text(store.updatable.isEmpty ? L.t("upd.none") : L.n("upd", store.updatable.count)).font(.system(size: 13, weight: .semibold))
+                    .contentTransition(.numericText()).animation(.snappy(duration: 0.25), value: store.updatable.count)
                 if !store.updatable.isEmpty {
                     Text(store.updatable.map(\.name).joined(separator: " · ")).font(.system(size: 12)).foregroundStyle(T.text2).lineLimit(2)
                     Button(L.t("btn.updateAll")) { store.updateAll() }.buttonStyle(HubButtonStyle(kind: .primary, small: true))
@@ -153,10 +165,13 @@ struct Sidebar: View {
 
     private func item(_ title: String, _ f: Filter, _ count: Int) -> some View {
         Button { filter = f } label: {
-            HStack {
-                Text(title).lineLimit(1)
-                Spacer()
-                Text("\(count)").font(.system(size: 12)).opacity(0.7)
+            HStack(spacing: 8) {
+                Text(title).lineLimit(1).truncationMode(.tail).help(title)
+                Spacer(minLength: 0)
+                // Compteur à chiffres fixes, au format local, qui défile d'un cran quand il change (façon NumberFlow).
+                Text(count.formatted(.number.locale(L.locale))).font(.system(size: 12).monospacedDigit()).opacity(0.7)
+                    .fixedSize().layoutPriority(1)
+                    .contentTransition(.numericText(value: Double(count))).animation(.snappy(duration: 0.25), value: count)
             }
             .padding(.horizontal, 10).padding(.vertical, 7)
             .foregroundStyle(filter == f ? Color.white : T.text)
@@ -193,9 +208,10 @@ struct AppCard: View {
                 HStack(spacing: 10) {
                     AppIcon(app: app, size: 40)
                     VStack(alignment: .leading, spacing: 3) {
-                        Text(app.name).font(.system(size: 14, weight: .semibold))
+                        Text(app.name).font(.system(size: 14, weight: .semibold)).lineLimit(2).help(app.name)
                         StatusTag(app: app)
                     }
+                    .layoutPriority(1)
                 }
                 Text(app.text).font(.system(size: 12)).foregroundStyle(selected ? T.selText2 : T.text2).lineLimit(5, reservesSpace: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -215,7 +231,7 @@ struct Actions: View {
 
     var body: some View {
         if let t = store.tasks[app.id] {
-            TaskRow(app: app, state: t)
+            TaskRow(app: app, state: t, compact: compact)
         } else {
             HStack(spacing: 8) {
                 switch store.status(app) {
@@ -239,6 +255,7 @@ struct TaskRow: View {
     @EnvironmentObject private var store: Store
     let app: CatalogApp
     let state: TaskState
+    var compact = false
 
     var body: some View {
         switch state {
@@ -267,7 +284,16 @@ struct TaskRow: View {
         }
     }
 
-    private func line(_ s: String, progress: Double?) -> some View {
+    @ViewBuilder private func line(_ s: String, progress: Double?) -> some View {
+        if compact {
+            // Dans une carte : la progression se fait dans la forme du bouton, sans changer la hauteur de la carte.
+            ProgressPill(text: s, progress: progress)
+        } else {
+            lineFull(s, progress: progress)
+        }
+    }
+
+    private func lineFull(_ s: String, progress: Double?) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(s).font(.system(size: 12)).foregroundStyle(T.text2)
             if let p = progress { ProgressView(value: p).tint(T.acc) } else { ProgressView().progressViewStyle(.linear).tint(T.acc) }
@@ -279,6 +305,7 @@ struct TaskRow: View {
 
 struct DetailView: View {
     @EnvironmentObject private var store: Store
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let app: CatalogApp?
 
     var body: some View {
@@ -287,9 +314,10 @@ struct DetailView: View {
                 HStack(spacing: 12) {
                     AppIcon(app: a, size: 64)
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(a.name).font(.system(size: 18, weight: .bold))
+                        Text(a.name).font(.system(size: 18, weight: .bold)).lineLimit(2).help(a.name)
                         StatusTag(app: a)
                     }
+                    .layoutPriority(1)
                 }
                 Text(a.text).font(.system(size: 13)).foregroundStyle(T.text2).fixedSize(horizontal: false, vertical: true)
                 VStack(spacing: 0) {
@@ -312,6 +340,9 @@ struct DetailView: View {
                 Spacer()
             }
         }
+        // Changement d'appli : le panneau reste en place, seul son contenu passe en fondu (choreograph).
+        .id(app?.id).transition(.opacity)
+        .animation(reduceMotion ? nil : .easeOut(duration: 0.15), value: app?.id)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding(16)
         .background(T.card, in: RoundedRectangle(cornerRadius: T.rBox))
@@ -319,7 +350,7 @@ struct DetailView: View {
     }
 
     private func kv(_ k: String, _ v: String) -> some View {
-        HStack { Text(k).foregroundStyle(T.text2); Spacer(); Text(v).fontWeight(.semibold).lineLimit(1) }
+        HStack(spacing: 12) { Text(k).foregroundStyle(T.text2).fixedSize(); Spacer(minLength: 0); Text(v).fontWeight(.semibold).lineLimit(1).truncationMode(.middle).help(v) }
             .font(.system(size: 12.5)).padding(.vertical, 4)
     }
 }

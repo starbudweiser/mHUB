@@ -14,6 +14,9 @@ enum L {
         return args.isEmpty ? s : String(format: s, locale: locale, arguments: args)
     }
 
+    /// Texte au singulier (clé `<base>.one`) ou au pluriel (`<base>.count`) selon n.
+    static func n(_ base: String, _ n: Int) -> String { t(base + (n == 1 ? ".one" : ".count"), n) }
+
     static func ago(_ d: Date) -> String {
         let f = RelativeDateTimeFormatter(); f.locale = locale; f.unitsStyle = .short; f.dateTimeStyle = .named
         return f.localizedString(for: min(d, Date()), relativeTo: Date())
@@ -35,7 +38,7 @@ enum L {
         "btn.install": "Installer", "btn.update": "Mettre à jour", "btn.open": "Ouvrir", "btn.settings": "Réglages",
         "btn.quit": "Quitter", "btn.quitUpdate": "Quitter et mettre à jour", "btn.cancel": "Annuler", "btn.retry": "Réessayer",
         "btn.updateAll": "Tout mettre à jour", "btn.reveal": "Afficher dans le Finder", "btn.close": "Fermer",
-        "upd.count": "%d mise(s) à jour", "upd.none": "Tout est à jour",
+        "upd.one": "%d mise à jour", "upd.count": "%d mises à jour", "list.empty": "Aucune appli ne correspond.", "list.showAll": "Voir toutes les applis", "upd.none": "Tout est à jour",
         "detail.installed": "Installée", "detail.latest": "Dernière version", "detail.size": "Taille", "detail.folder": "Dossier",
         "detail.category": "Catégorie", "detail.bundle": "Identifiant", "detail.none": "—", "detail.pick": "Choisis une appli pour voir sa fiche.",
         "task.downloading": "Téléchargement · %d %%", "task.preparing": "Préparation…", "task.verifying": "Vérification de la signature…",
@@ -46,7 +49,7 @@ enum L {
         "err.signature": "Signature invalide : installation refusée.", "err.bundle": "L'appli téléchargée n'est pas la bonne.",
         "err.noApp": "Aucune appli dans l'archive.", "err.write": "Impossible d'écrire dans le dossier d'installation.",
         "err.network": "Réseau indisponible.",
-        "menu.none": "Aucune appli installée", "menu.summary": "%d appli(s) · %d mise(s) à jour",
+        "menu.none": "Aucune appli installée", "apps.one": "%d appli", "apps.count": "%d applis",
         "menu.catalogue": "Ouvrir le catalogue…", "menu.settings": "Réglages de mHUB…", "menu.about": "À propos de mHUB",
         "menu.quit": "Quitter mHUB", "menu.others": "Autres applis (%d)", "menu.version": "v%@ · %@", "menu.updateAvail": "mise à jour",
         "menu.open": "Ouvrir", "menu.appSettings": "Réglages…", "menu.menubarIcon": "Icône dans la barre des menus", "menu.quitApp": "Quitter %@",
@@ -79,7 +82,7 @@ enum L {
         "btn.install": "Install", "btn.update": "Update", "btn.open": "Open", "btn.settings": "Settings",
         "btn.quit": "Quit", "btn.quitUpdate": "Quit and update", "btn.cancel": "Cancel", "btn.retry": "Retry",
         "btn.updateAll": "Update all", "btn.reveal": "Show in Finder", "btn.close": "Close",
-        "upd.count": "%d update(s)", "upd.none": "Everything is up to date",
+        "upd.one": "%d update", "upd.count": "%d updates", "list.empty": "No app matches.", "list.showAll": "Show all apps", "upd.none": "Everything is up to date",
         "detail.installed": "Installed", "detail.latest": "Latest version", "detail.size": "Size", "detail.folder": "Folder",
         "detail.category": "Category", "detail.bundle": "Identifier", "detail.none": "—", "detail.pick": "Pick an app to see its details.",
         "task.downloading": "Downloading · %d %%", "task.preparing": "Preparing…", "task.verifying": "Verifying the signature…",
@@ -90,7 +93,7 @@ enum L {
         "err.signature": "Invalid signature: installation refused.", "err.bundle": "The downloaded app is not the expected one.",
         "err.noApp": "No app found in the archive.", "err.write": "Cannot write to the install folder.",
         "err.network": "Network unavailable.",
-        "menu.none": "No app installed", "menu.summary": "%d app(s) · %d update(s)",
+        "menu.none": "No app installed", "apps.one": "%d app", "apps.count": "%d apps",
         "menu.catalogue": "Open the catalog…", "menu.settings": "mHUB Settings…", "menu.about": "About mHUB",
         "menu.quit": "Quit mHUB", "menu.others": "Other apps (%d)", "menu.version": "v%@ · %@", "menu.updateAvail": "update",
         "menu.open": "Open", "menu.appSettings": "Settings…", "menu.menubarIcon": "Menu bar icon", "menu.quitApp": "Quit %@",
@@ -123,7 +126,7 @@ enum L {
         "btn.install": "Instalar", "btn.update": "Actualizar", "btn.open": "Abrir", "btn.settings": "Ajustes",
         "btn.quit": "Salir", "btn.quitUpdate": "Salir y actualizar", "btn.cancel": "Cancelar", "btn.retry": "Reintentar",
         "btn.updateAll": "Actualizar todo", "btn.reveal": "Mostrar en el Finder", "btn.close": "Cerrar",
-        "upd.count": "%d actualización(es)", "upd.none": "Todo está al día",
+        "upd.one": "%d actualización", "upd.count": "%d actualizaciones", "list.empty": "Ninguna app coincide.", "list.showAll": "Ver todas las apps", "upd.none": "Todo está al día",
         "detail.installed": "Instalada", "detail.latest": "Última versión", "detail.size": "Tamaño", "detail.folder": "Carpeta",
         "detail.category": "Categoría", "detail.bundle": "Identificador", "detail.none": "—", "detail.pick": "Elige una app para ver su ficha.",
         "task.downloading": "Descargando · %d %%", "task.preparing": "Preparando…", "task.verifying": "Verificando la firma…",
@@ -134,7 +137,7 @@ enum L {
         "err.signature": "Firma no válida: instalación rechazada.", "err.bundle": "La app descargada no es la esperada.",
         "err.noApp": "No hay ninguna app en el archivo.", "err.write": "No se puede escribir en la carpeta de instalación.",
         "err.network": "Red no disponible.",
-        "menu.none": "Ninguna app instalada", "menu.summary": "%d app(s) · %d actualización(es)",
+        "menu.none": "Ninguna app instalada", "apps.one": "%d app", "apps.count": "%d apps",
         "menu.catalogue": "Abrir el catálogo…", "menu.settings": "Ajustes de mHUB…", "menu.about": "Acerca de mHUB",
         "menu.quit": "Salir de mHUB", "menu.others": "Otras apps (%d)", "menu.version": "v%@ · %@", "menu.updateAvail": "actualización",
         "menu.open": "Abrir", "menu.appSettings": "Ajustes…", "menu.menubarIcon": "Icono en la barra de menús", "menu.quitApp": "Salir de %@",
@@ -167,7 +170,7 @@ enum L {
         "btn.install": "Installa", "btn.update": "Aggiorna", "btn.open": "Apri", "btn.settings": "Impostazioni",
         "btn.quit": "Esci", "btn.quitUpdate": "Esci e aggiorna", "btn.cancel": "Annulla", "btn.retry": "Riprova",
         "btn.updateAll": "Aggiorna tutto", "btn.reveal": "Mostra nel Finder", "btn.close": "Chiudi",
-        "upd.count": "%d aggiornamento/i", "upd.none": "Tutto è aggiornato",
+        "upd.one": "%d aggiornamento", "upd.count": "%d aggiornamenti", "list.empty": "Nessuna app corrisponde.", "list.showAll": "Mostra tutte le app", "upd.none": "Tutto è aggiornato",
         "detail.installed": "Installata", "detail.latest": "Ultima versione", "detail.size": "Dimensione", "detail.folder": "Cartella",
         "detail.category": "Categoria", "detail.bundle": "Identificatore", "detail.none": "—", "detail.pick": "Scegli un'app per vederne la scheda.",
         "task.downloading": "Download · %d %%", "task.preparing": "Preparazione…", "task.verifying": "Verifica della firma…",
@@ -178,7 +181,7 @@ enum L {
         "err.signature": "Firma non valida: installazione rifiutata.", "err.bundle": "L'app scaricata non è quella attesa.",
         "err.noApp": "Nessuna app nell'archivio.", "err.write": "Impossibile scrivere nella cartella di installazione.",
         "err.network": "Rete non disponibile.",
-        "menu.none": "Nessuna app installata", "menu.summary": "%d app · %d aggiornamento/i",
+        "menu.none": "Nessuna app installata", "apps.one": "%d app", "apps.count": "%d app",
         "menu.catalogue": "Apri il catalogo…", "menu.settings": "Impostazioni di mHUB…", "menu.about": "Informazioni su mHUB",
         "menu.quit": "Esci da mHUB", "menu.others": "Altre app (%d)", "menu.version": "v%@ · %@", "menu.updateAvail": "aggiornamento",
         "menu.open": "Apri", "menu.appSettings": "Impostazioni…", "menu.menubarIcon": "Icona nella barra dei menu", "menu.quitApp": "Esci da %@",

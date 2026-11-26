@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>mHUB avant après</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:13px/1.4 -apple-system,"SF Pro Text",system-ui,sans-serif;background:#0b0b0d;color:#eee;-webkit-font-smoothing:antialiased;padding-bottom:90px}
+.top{padding:18px 28px 6px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.top h1{font-size:20px;font-weight:700}
+.hint{color:#999;font-size:12px}
+.seg{display:inline-flex;background:#222;border-radius:999px;padding:3px}
+.seg button{border:0;background:none;color:#eee;font:inherit;padding:5px 16px;border-radius:999px;cursor:pointer}
+.seg button.on{background:#444}
+.stage{padding:10px 28px 20px}
+#fit{width:1120px}
+/* ===== maquette d'origine (detaillees.html), inchangée ===== */
+.skin{--rw:26px;--rb:20px;--rc:12px;--rch:20px;--m:#f5b800;--sh:0 24px 60px rgba(0,0,0,.35);background:var(--bg);color:var(--t);font-size:13px;border-radius:var(--rw);box-shadow:var(--sh);
+ --bg:#131316;--card:#232327;--ctl:#2c2c31;--t:#f5f5f7;--t2:#98989f;--acc:#0a84ff;--onacc:#fff;--ok:#30d158;--warn:#ff9f0a}
+.m{color:var(--m)}
+.win{width:1120px;height:700px;display:grid;grid-template-columns:220px 1fr;grid-template-rows:auto 1fr;overflow:hidden}
+.bar{grid-column:1/3;display:flex;align-items:center;gap:12px;padding:12px 16px}
+.lights{display:flex;gap:7px}.lights i{width:12px;height:12px;border-radius:50%;display:block}
+.lights i:nth-child(1){background:#ff5f57}.lights i:nth-child(2){background:#febc2e}.lights i:nth-child(3){background:#28c840}
+.brand{font-weight:700;font-size:15px;margin-left:8px}.brand small{font-weight:500;color:var(--t2);font-size:12px;margin-left:6px}
+.right{margin-left:auto;display:flex;gap:8px;align-items:center;color:var(--t2);font-size:12px}
+.btn{background:var(--ctl);color:var(--t);padding:6px 12px;border-radius:var(--rc);font-weight:500;display:inline-block;white-space:nowrap;cursor:pointer;user-select:none}
+.btn.pri{background:var(--acc);color:var(--onacc)}.btn.sm{padding:4px 10px;font-size:12px}
+.side{padding:14px;display:flex;flex-direction:column;gap:4px}
+.h{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--t2);margin:10px 4px 4px}
+.nav{display:flex;justify-content:space-between;padding:7px 10px;border-radius:var(--rc);cursor:pointer}
+.nav span:last-child{color:var(--t2);font-size:12px}
+.nav.on{background:var(--acc);color:var(--onacc)}.nav.on span:last-child{color:inherit;opacity:.8}
+.upd{margin-top:auto;background:var(--card);border-radius:var(--rb);padding:12px}
+.upd b{display:block;margin-bottom:6px}
+.main{padding:14px 16px;overflow:hidden;display:grid;grid-template-columns:1fr 330px;gap:14px}
+.col{display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.toolbar{display:flex;gap:8px;align-items:center}
+.search{flex:1;background:var(--ctl);border-radius:var(--rc);padding:8px 12px;color:var(--t2)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-content:start}
+.card{background:var(--card);border-radius:var(--rb);padding:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer}
+.card.sel{outline:2px solid var(--acc)}
+.head{display:flex;gap:10px;align-items:center}
+.ico{width:40px;height:40px;border-radius:var(--rc);display:grid;place-items:center;font-weight:700;color:#fff;font-size:14px;flex:none}
+.ico.l{width:64px;height:64px;font-size:22px;border-radius:18px}
+.nm{font-weight:650;font-size:14px}
+.ds{color:var(--t2);font-size:12px;line-height:1.35}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.tag{font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:var(--rch);background:var(--ctl);color:var(--t2);white-space:nowrap;display:inline-block}
+.tag.ok{background:color-mix(in srgb,var(--ok) 22%,transparent);color:var(--ok)}
+.tag.warn{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}
+.detail{background:var(--card);border-radius:var(--rb);padding:16px;display:flex;flex-direction:column;gap:10px}
+.dbody{display:flex;flex-direction:column;gap:10px}
+.shot{height:130px;border-radius:var(--rc);background:linear-gradient(135deg,var(--ctl),color-mix(in srgb,var(--acc) 25%,var(--ctl)));display:grid;place-items:center;color:var(--t2);font-size:12px}
+.kv{display:flex;justify-content:space-between;padding:4px 0}.kv span:first-child{color:var(--t2)}
+.pb{height:6px;border-radius:99px;background:var(--ctl);overflow:hidden}.pb i{display:block;height:100%;background:var(--acc);border-radius:99px}
+/* ===== AVANT : animations d'origine (cascade, double entrée) ===== */
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+@keyframes slidein{from{opacity:0;transform:translateX(40px)}}
+@keyframes fade{from{opacity:0}}
+.v-avant .card.anim{animation:in .4s ease both}
+.v-avant .detail.anim{animation:slidein .4s ease both}
+.v-avant .detail.anim .dbody>*{animation:in .4s ease both}
+/* ===== APRÈS : corrections break-ui ===== */
+.v-apres .nav{gap:8px}
+.v-apres .nav span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v-apres .nav span:last-child,.v-apres .kv b,.v-apres .prog span{font-variant-numeric:tabular-nums;flex:none}
+.v-apres .nav span:last-child{display:inline-block}
+.v-apres .main,.v-apres .col{min-height:0}
+.v-apres .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.v-apres .gwrap{overflow:auto;min-height:0;padding-bottom:30px;-webkit-mask-image:linear-gradient(#000 calc(100% - 36px),transparent);mask-image:linear-gradient(#000 calc(100% - 36px),transparent)}
+.v-apres .card{transition:background-color .12s ease-out}
+.v-apres .card:hover{background:color-mix(in srgb,var(--t) 7%,var(--card))}
+.v-apres .card.sel{outline:none;background:color-mix(in srgb,var(--t) 14%,var(--card))}
+.v-apres .upd{display:flex;flex-direction:column;align-items:center;text-align:center}
+.v-apres .upd b{margin-bottom:2px}
+.v-apres .head{align-items:flex-start}
+.v-apres .head>div{min-width:0}
+.v-apres .nm{overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:3px}
+.v-apres .card .ds{overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.v-apres .detail{min-height:0}
+.v-apres .dbody{flex:1;min-height:0;overflow:auto}
+.v-apres .detail .ds,.v-apres .detail .nm{overflow-wrap:anywhere}
+.v-apres .kv{gap:14px}.v-apres .kv b{flex:0 1 auto;min-width:0;text-align:right;overflow-wrap:anywhere}
+.v-apres .detail .foot{flex:none;justify-content:flex-start}
+.empty{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--t2);display:flex;flex-direction:column;gap:10px;align-items:center}
+.empty b{color:var(--t);font-size:15px}
+.more{grid-column:1/-1;text-align:center;padding:6px}
+/* ===== APRÈS : chorégraphie ===== */
+.btn.prog{position:relative;overflow:hidden;text-align:center;background:var(--ctl);color:var(--t);cursor:default}
+.btn.prog i{position:absolute;inset:0 auto 0 0;background:color-mix(in srgb,var(--acc) 55%,var(--ctl));width:0}
+.btn.prog span{position:relative}
+.v-apres .swap{animation:fade .15s ease-out both}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+/* ===== bilan ===== */
+.report{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px;max-width:1120px}
+.report section{background:#17171a;border-radius:18px;padding:18px 20px}
+.report h2{font-size:15px;margin-bottom:4px}.report p.k{color:#999;font-size:12px;margin-bottom:12px}
+.report ol{padding-left:20px;display:flex;flex-direction:column;gap:9px;color:#ccc;font-size:12.5px;line-height:1.45}
+.report li b{color:#fff;font-weight:600}
+.report li i{font-style:normal;color:#7fd99a}
+.dock{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:10px;align-items:center;background:#1c1c1f;border:1px solid #333;padding:6px 8px 6px 14px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.5);font-size:12px;color:#aaa;z-index:9}
+@media(max-width:900px){.report{grid-template-columns:1fr}}
+</style></head><body>
+<div class="top"><h1><span style="color:#f5b800">m</span>HUB · avant / après les skills d'Emil Kowalski</h1>
+<span class="seg" id="ver"><button data-v="avant" class="on">Avant</button><button data-v="apres">Après</button></span>
+<span class="hint">Essayez : cliquer une carte, un filtre à gauche, « Installer » · changer les données en bas</span></div>
+<div class="stage"><div id="fit"><div id="root"></div></div>
+<div class="report">
+ <section><h2>break-ui · 11 casses trouvées avec le « pire cas »</h2><p class="k">Mêmes données dans les deux versions ; seules les règles CSS et l'affichage changent.</p><ol>
+  <li><b>Nom long sans espace</b> (fOMOD_SIM_…) : il déborde de sa carte et passe sous la voisine. <i>Colonnes à largeur fixe, nom sur 2 lignes max, nom complet au survol.</i></li>
+  <li><b>Adresse sans espace dans une description</b> : elle sort de la carte. <i>Coupure autorisée n'importe où, 3 lignes max.</i></li>
+  <li><b>« 1 mises à jour », « 0 mises à jour »</b>. <i>Règle de pluriel ; encadré masqué quand il n'y a rien.</i></li>
+  <li><b>« 1284 » sans séparateur</b>, chiffres de largeur variable. <i>Format « 1 284 », chiffres tabulaires.</i></li>
+  <li><b>Libellé de catégorie long</b> (traduction) : il passe sur trois lignes et décale toute la barre latérale. <i>Libellé tronqué avec « … », compteur fixe.</i></li>
+  <li><b>Chemin de dossier long</b> : il se colle au mot « Dossier », sans espace. <i>Retour à la ligne, aligné à droite.</i></li>
+  <li><b>Description longue dans la fiche</b> : les boutons tiennent de justesse en bas ; un paragraphe de plus et ils sortent de la fenêtre. <i>Fiche défilante, boutons toujours visibles.</i></li>
+  <li><b>1 284 applis</b> : la liste est coupée net en bas, sans défilement, et les 1 284 cartes sont dessinées d'un coup. <i>Zone défilante avec fondu, 60 cartes puis « Afficher les suivantes ».</i></li>
+  <li><b>Catalogue vide</b> : grille blanche et fiche « undefined ». <i>État vide avec un bouton « Réessayer ».</i></li>
+  <li><b>Description absente</b> : un trou dans la carte. <i>Ligne omise.</i></li>
+  <li><b>Contour de la carte sélectionnée</b> : dessiné hors de la carte (<code>outline</code>), il est rogné dès que la liste devient défilante. <i>Plus de contour : la carte s'éclaircit d'un cran au survol, de deux quand elle est sélectionnée (fond neutre, règle Socle).</i></li>
+ </ol></section>
+ <section><h2>choreograph + remove-animations · 4 changements</h2><p class="k">À essayer à la souris, de préférence en « Démo ».</p><ol>
+  <li><b>Filtre de la barre latérale</b> : avant, la grille rejoue une cascade de 80 ms par carte, identique pour toutes (avec 1 284 applis, la dernière arrive au bout de 100 s). <i>Supprimée : un filtre se clique souvent, la grille s'affiche tout de suite.</i></li>
+  <li><b>Sélection d'une carte</b> : avant, la fiche glisse en entier puis ses éléments arrivent un par un, deux entrées empilées. <i>Le panneau reste en place, seul son contenu change en fondu de 150 ms.</i></li>
+  <li><b>Installation</b> : avant, le bouton disparaît, une barre surgit sous la description (la carte grandit et pousse ses voisines), puis toute la grille se redessine avec sa cascade. <i>La progression se fait dans le bouton lui-même, sans changer la taille de la carte ; à la fin, bouton et étiquette changent ensemble, et les compteurs de gauche défilent d'un cran (façon NumberFlow).</i></li>
+  <li><b>Réglage « Réduire les animations » de macOS</b> : ignoré avant. <i>Respecté : tout s'affiche sans mouvement.</i></li>
+ </ol></section>
+</div></div>
+<div class="dock">Données <span class="seg" id="dat"><button data-d="demo" class="on">Démo</button><button data-d="worst">Pire cas</button><button data-d="empty">Vide</button><button data-d="one">Une seule</button></span></div>
+<script>
+const C=['#7c6cff','#ff7a59','#19a7ce','#2fb36a','#e0558a','#f59e0b','#4f8cff','#8a63d2'];
+const CATS=['Système & nettoyage','Fichiers & documents','Créativité & médias','Communication & web','IA & automatisation'];
+const CATS_W=['Système & nettoyage','Fichiers & documents','Créativité & médias','Communication, réseaux sociaux et navigation sur le web','IA & automatisation'];
+const base={v:'1.3',iv:'1.3',size:'18 Mo',dir:'Applications Personnelles'};
+const DEMO=[["mBACKUP","Sauvegardes automatiques.","maj",0],["mCLEAN","Nettoie le Mac.","ok",0],["mPDF","Lire, annoter, signer des PDF.","maj",1],["mTAPES","Enregistre l'écran en silence.","ok",2],["mUGGINFACE","Veille des modèles IA.","ok",4],["iCONIQ","Bibliothèque d'icônes.","ok",2],["mLINKS","Raccourcis rangés.","non",1],["mPASTE","Historique du presse-papiers.","non",1]]
+ .map(([n,d,s,cat])=>({...base,n,d,s,cat,v:s==='maj'?'2.4':'1.3',iv:s==='non'?'':s==='maj'?'2.3':'1.3'}));
+function worst(){
+ const a=[
+  {n:'mTRANSLATOR',d:"Traduit les mods, les sous-titres et les fichiers de chaînes de Skyrim dans quatre langues, avec un glossaire partagé entre projets, une relecture par lots, la détection des chaînes oubliées, un mode hors connexion et un export direct vers Nexus Mods. Les traductions déjà validées sont gardées d'une version du mod à l'autre, et chaque relecteur voit qui a modifié quoi.",s:'maj',v:'10.12.3-beta.4',iv:'9.0.0',size:'1 234,5 Mo',dir:'~/Applications/Applications Personnelles/Outils de traduction/Archives 2026',cat:3},
+  {n:'fOMOD_SIM_ASSISTANT_DE_TEST_DES_INSTALLATEURS',d:'',s:'non',v:'0.1',iv:'',size:'2 Mo',dir:'Applications Personnelles',cat:1},
+  {n:'m',d:'Outil.',s:'non',v:'1.0',iv:'',size:'1 Mo',dir:'Applications Personnelles',cat:0},
+  {n:'pLUGINSLENS',d:'Téléchargement : https://github.com/starbudweiser/pLUGINSLENS/releases/download/v2.0.0/pLUGINSLENS-2.0.0-universal.zip',s:'non',v:'2.0.0',iv:'',size:'9 Mo',dir:'Applications Personnelles',cat:1}];
+ for(let i=a.length;i<1284;i++)a.push({...base,n:'mOUTIL '+(i+1),d:'Outil du catalogue.',s:'non',iv:'',cat:i%4});
+ return a;}
+const SETS={demo:()=>DEMO.map(x=>({...x})),worst,empty:()=>[],one:()=>[{...DEMO[0]}]};
+let V='avant',D='demo',data=SETS.demo(),sel=0,filter='all',shown=60;
+const nf=new Intl.NumberFormat('fr-FR');
+const root=document.getElementById('root');
+const AP=()=>V==='apres';
+const fmt=n=>AP()?nf.format(n):String(n);
+const plural=(n,one,many)=>n===1?one:many;
+const F={all:()=>true,inst:a=>a.s!=='non',maj:a=>a.s==='maj',non:a=>a.s==='non'};
+const match=(a,f)=>f.startsWith('c')?a.cat==+f.slice(1):F[f](a);
+const count=f=>data.filter(a=>match(a,f)).length;
+const tag=a=>a.s==='maj'?'<span class="tag warn">Mise à jour</span>':a.s==='ok'?'<span class="tag ok">✓ À jour</span>':'<span class="tag">Non installée</span>';
+const btn=(a,i)=>a.s==='non'?`<span class="btn pri sm" data-act="install" data-i="${i}">Installer</span>`:a.s==='maj'?`<span class="btn pri sm" data-act="install" data-i="${i}">Mettre à jour</span>`:'<span class="btn sm">Ouvrir</span>';
+function card(a,i,k){
+ const anim=!AP()?` anim" style="animation-delay:${k*80}ms`:'';
+ return `<div class="card${i===sel?' sel':''}${anim}" data-card="${i}"><div class="head"><span class="ico" style="background:${C[i%8]}">${a.n.slice(0,2)}</span><div><div class="nm"${AP()?` title="${a.n}"`:''}>${a.n}</div><span class="tg">${tag(a)}</span></div></div>`+
+  ((!AP()||a.d)?`<div class="ds">${a.d}</div>`:'')+`<div class="foot"><span class="bt">${btn(a,i)}</span></div></div>`;}
+function gridHTML(){
+ const list=data.map((a,i)=>[a,i]).filter(([a])=>match(a,filter));
+ if(AP()&&!list.length)return data.length?'<div class="empty"><b>Aucune appli dans cette catégorie</b><span class="btn sm" data-f="all">Voir toutes les applis</span></div>':'<div class="empty"><b>Le catalogue n\'a pas pu être chargé</b><span>Vérifiez la connexion, puis réessayez.</span><span class="btn pri sm">Réessayer</span></div>';
+ const vis=AP()?list.slice(0,shown):list;
+ let h=vis.map(([a,i],k)=>card(a,i,k)).join('');
+ if(AP()&&list.length>shown)h+=`<div class="more"><span class="btn sm" data-more="1">Afficher les ${nf.format(Math.min(60,list.length-shown))} suivantes (${nf.format(list.length-shown)} restantes)</span></div>`;
+ return h;}
+function detailHTML(){
+ const a=data[sel];
+ if(AP()&&!a)return '<div class="dbody"><div class="ds" style="margin:auto;text-align:center">Sélectionnez une appli pour voir sa fiche.</div></div>';
+ const s=a||{};
+ const t=s.s==='maj'?`<span class="tag warn">Mise à jour ${s.v} disponible</span>`:s.s==='ok'?'<span class="tag ok">✓ À jour</span>':'<span class="tag">Non installée</span>';
+ const b=s.s==='non'?`<span class="btn pri" data-act="install" data-i="${sel}">Installer</span>`:s.s==='maj'?`<span class="btn pri" data-act="install" data-i="${sel}">Mettre à jour</span><span class="btn">Ouvrir</span>`:'<span class="btn pri">Ouvrir</span><span class="btn">Réglages</span>';
+ return `<div class="dbody"><div class="head"><span class="ico l" style="background:${C[sel%8]}">${String(s.n).slice(0,2)}</span><div><div class="nm" style="font-size:17px">${s.n}</div>${t}</div></div>`+
+  ((!AP()||s.d)?`<div class="ds">${s.d}</div>`:'')+`<div class="shot">Capture de l'appli</div><div><div class="kv"><span>Installée</span><b>${s.iv||'—'}</b></div><div class="kv"><span>Dernière version</span><b>${s.v}</b></div><div class="kv"><span>Taille</span><b>${s.size}</b></div><div class="kv"><span>Dossier</span><b>${s.dir}</b></div></div></div><div class="foot" style="margin-top:auto">${b}</div>`;}
+function sideHTML(){
+ const cats=D==='worst'?CATS_W:CATS;
+ const nav=(f,l)=>`<div class="nav${filter===f?' on':''}" data-f="${f}"><span>${l}</span><span data-k="${f}">${fmt(count(f))}</span></div>`;
+ const maj=data.filter(a=>a.s==='maj'),u=maj.length;
+ let upd='';
+ if(!AP())upd=`<div class="upd"><b>${u} mises à jour</b><span class="ds">${maj.map(a=>a.n).join(' · ')}</span><div style="margin-top:8px"><span class="btn pri sm">Tout mettre à jour</span></div></div>`;
+ else if(u)upd=`<div class="upd"><b>${nf.format(u)} ${plural(u,'mise à jour','mises à jour')}</b><span class="ds">${maj.slice(0,3).map(a=>a.n).join(' · ')}${u>3?` et ${u-3} autres`:''}</span><div style="margin-top:8px"><span class="btn pri sm">${plural(u,'Mettre à jour','Tout mettre à jour')}</span></div></div>`;
+ return `<div class="h">Bibliothèque</div>${nav('all','Toutes')}${nav('inst','Installées')}${nav('maj','Mises à jour')}${nav('non','Non installées')}<div class="h">Catégories</div>${cats.map((c,i)=>nav('c'+i,c)).join('')}${upd}`;}
+function render(){
+ root.className='v-'+V;
+ root.innerHTML=`<div class="win skin"><div class="bar"><div class="lights"><i></i><i></i><i></i></div><div class="brand"><span class="m">m</span>HUB<small>DESKTOP MAC TOOLKIT</small></div><div class="right"><span>Vérifié il y a 3 h</span><span class="btn">Vérifier</span><span class="btn">⚙</span></div></div>
+ <div class="side" id="side">${sideHTML()}</div>
+ <div class="main"><div class="col"><div class="toolbar"><div class="search">⌕  Rechercher une appli…</div><span class="btn">Tri : Nom ▾</span></div><div class="gwrap"><div class="grid" id="grid">${gridHTML()}</div></div></div>
+ <div class="detail${AP()?'':' anim'}" id="detail">${detailHTML()}</div></div></div>`;
+ if(!AP())staggerDetail();}
+function staggerDetail(){document.querySelectorAll('#detail .dbody>*').forEach((e,k)=>e.style.animationDelay=(k*100)+'ms');}
+function refreshCounts(){ // après : les compteurs changés défilent d'un cran
+ document.querySelectorAll('#side [data-k]').forEach(e=>{const v=fmt(count(e.dataset.k));if(e.textContent!==v){e.textContent=v;e.animate([{transform:'translateY(60%)',opacity:0},{transform:'none',opacity:1}],{duration:220,easing:'cubic-bezier(.2,.8,.2,1)'});}});
+ const u=document.querySelector('#side .upd'),nu=data.filter(a=>a.s==='maj').length;
+ if(u&&!nu)u.remove();else if(u)u.outerHTML=sideHTML().match(/<div class="upd">.*$/s)[0];}
+function install(i){
+ const a=data[i];
+ if(!AP()){ // AVANT : le bouton disparaît, une barre surgit, puis tout se redessine
+  document.querySelectorAll(`[data-act="install"][data-i="${i}"]`).forEach(b=>b.remove());
+  setTimeout(()=>{const c=document.querySelector(`[data-card="${i}"]`);if(!c)return;const p=document.createElement('div');p.className='pb';p.innerHTML='<i style="width:0;transition:width 1.6s linear"></i>';c.insertBefore(p,c.querySelector('.foot'));requestAnimationFrame(()=>requestAnimationFrame(()=>p.firstChild.style.width='100%'));},300);
+  setTimeout(()=>{a.s='ok';a.iv=a.v;render();},2100);return;}
+ // APRÈS : la progression se fait dans le bouton, même taille
+ const btns=[...document.querySelectorAll(`[data-act="install"][data-i="${i}"]`)];
+ btns.forEach(b=>{b.style.minWidth=b.offsetWidth+'px';b.removeAttribute('data-act');b.classList.remove('pri');b.classList.add('prog');b.innerHTML='<i></i><span>0 %</span>';});
+ const t0=performance.now(),dur=1800;
+ (function tick(t){const p=Math.min(1,(t-t0)/dur);btns.forEach(b=>{b.firstChild.style.width=(p*100)+'%';b.lastChild.textContent=Math.round(p*100)+' %';});
+  if(p<1)return requestAnimationFrame(tick);
+  a.s='ok';a.iv=a.v;
+  const c=document.querySelector(`[data-card="${i}"]`);
+  if(c){c.querySelector('.tg').innerHTML=tag(a);c.querySelector('.bt').innerHTML=btn(a,i);c.querySelector('.tg').classList.add('swap');c.querySelector('.bt').classList.add('swap');}
+  if(sel===i){const d=document.getElementById('detail');d.innerHTML=detailHTML();d.querySelector('.dbody').classList.add('swap');}
+  refreshCounts();})(t0);}
+root.addEventListener('click',e=>{
+ const ins=e.target.closest('[data-act="install"]');if(ins){e.stopPropagation();return install(+ins.dataset.i);}
+ const f=e.target.closest('[data-f]');if(f){filter=f.dataset.f;shown=60;
+  if(AP()){document.getElementById('grid').innerHTML=gridHTML();document.querySelectorAll('#side .nav').forEach(n=>n.classList.toggle('on',n.dataset.f===filter));}else render();return;}
+ const m=e.target.closest('[data-more]');if(m){shown+=60;document.getElementById('grid').innerHTML=gridHTML();return;}
+ const c=e.target.closest('[data-card]');if(c){sel=+c.dataset.card;document.querySelectorAll('[data-card]').forEach(x=>x.classList.toggle('sel',x===c));
+  const d=document.getElementById('detail');d.innerHTML=detailHTML();
+  if(AP())d.querySelector('.dbody').classList.add('swap');else{d.classList.remove('anim');void d.offsetWidth;d.classList.add('anim');staggerDetail();}}});
+function seg(id,key,fn){document.querySelectorAll(`#${id} button`).forEach(b=>b.onclick=()=>{document.querySelectorAll(`#${id} button`).forEach(x=>x.classList.toggle('on',x===b));fn(b.dataset[key]);});}
+seg('ver','v',v=>{V=v;data=SETS[D]();sel=0;filter='all';shown=60;render();});
+seg('dat','d',d=>{D=d;data=SETS[d]();sel=0;filter='all';shown=60;render();});
+function fit(){document.getElementById('fit').style.zoom=Math.min(1,(innerWidth-56)/1120);}
+addEventListener('resize',fit);fit();render();
+</script></body></html>

@@ -1,5 +1,5 @@
 {
- "version": 1795600375,
+ "version": 1795653454,
  "teamID": "35KLMK53PN",
  "owner": "starbudweiser",
  "apps": [
@@ -398,6 +398,23 @@
     "games",
     "video"
    ]
+  },
+  {
+   "id": "mKOBO",
+   "name": "mKOBO",
+   "bundleId": "fr.stephan.mkobo",
+   "desc": {
+    "fr": "Trouve des livres, BD et livres audio gratuits et légaux (Gutenberg, Wikisource, Internet Archive, LibriVox…) et envoie-les sur ta liseuse Kobo (USB) ou dans Google Drive, avec la boutique Kobo intégrée.",
+    "en": "Find free, legal books, comics and audiobooks (Gutenberg, Wikisource, Internet Archive, LibriVox…) and send them to your Kobo e-reader (USB) or to Google Drive, with the Kobo store built in.",
+    "es": "Encuentra libros, cómics y audiolibros gratuitos y legales (Gutenberg, Wikisource, Internet Archive, LibriVox…) y envíalos a tu lector Kobo (USB) o a Google Drive, con la tienda Kobo integrada.",
+    "it": "Trova libri, fumetti e audiolibri gratuiti e legali (Gutenberg, Wikisource, Internet Archive, LibriVox…) e inviali al tuo lettore Kobo (USB) o a Google Drive, con il negozio Kobo integrato."
+   },
+   "repo": "mKOBO",
+   "auto": true,
+   "cats": [
+    "files"
+   ],
+   "category": "files"
   },
   {
    "id": "mSLICE",

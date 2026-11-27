@@ -1,5 +1,5 @@
 {
- "version": 1795653454,
+ "version": 1795739794,
  "teamID": "35KLMK53PN",
  "owner": "starbudweiser",
  "apps": [
@@ -400,6 +400,23 @@
    ]
   },
   {
+   "id": "mDOWN",
+   "name": "mDOWN",
+   "bundleId": "fr.stephan.mdown",
+   "desc": {
+    "fr": "Téléchargeur de médias léger avec un moteur yt-dlp qui se met à jour seul, un serveur MCP pour les IA et une extension Chromium.",
+    "en": "Light media downloader with a self-updating yt-dlp engine, MCP server and Chromium extension.",
+    "es": "Descargador de medios ligero con motor yt-dlp que se actualiza solo, servidor MCP para IA y extensión de Chromium.",
+    "it": "Downloader di media leggero con motore yt-dlp che si aggiorna da solo, server MCP per le IA ed estensione Chromium."
+   },
+   "repo": "mDOWN",
+   "auto": true,
+   "cats": [
+    "files"
+   ],
+   "category": "files"
+  },
+  {
    "id": "mKOBO",
    "name": "mKOBO",
    "bundleId": "fr.stephan.mkobo",
@@ -432,6 +449,23 @@
    "cats": [
     "video"
    ]
+  },
+  {
+   "id": "mSOUND",
+   "name": "mSOUND",
+   "bundleId": "fr.stephan.msound",
+   "desc": {
+    "fr": "Convertit, découpe et édite l'audio : conversion par clic droit dans le Finder et éditeur de forme d'onde.",
+    "en": "Convert, cut and edit audio on macOS: Finder right-click conversion plus a waveform editor.",
+    "es": "Convierte, recorta y edita audio: conversión con clic derecho en el Finder y editor de forma de onda.",
+    "it": "Converte, taglia e modifica l'audio: conversione con clic destro nel Finder ed editor della forma d'onda."
+   },
+   "repo": "mSOUND",
+   "auto": true,
+   "cats": [
+    "creative"
+   ],
+   "category": "creative"
   },
   {
    "id": "mTALKIE",

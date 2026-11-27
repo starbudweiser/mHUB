@@ -22,5 +22,17 @@
   "en": "Find free, legal books, comics and audiobooks (Gutenberg, Wikisource, Internet Archive, LibriVox…) and send them to your Kobo e-reader (USB) or to Google Drive, with the Kobo store built in.",
   "es": "Encuentra libros, cómics y audiolibros gratuitos y legales (Gutenberg, Wikisource, Internet Archive, LibriVox…) y envíalos a tu lector Kobo (USB) o a Google Drive, con la tienda Kobo integrada.",
   "it": "Trova libri, fumetti e audiolibri gratuiti e legali (Gutenberg, Wikisource, Internet Archive, LibriVox…) e inviali al tuo lettore Kobo (USB) o a Google Drive, con il negozio Kobo integrato."
+ },
+ "mSOUND": {
+  "fr": "Convertit, découpe et édite l'audio : conversion par clic droit dans le Finder et éditeur de forme d'onde.",
+  "en": "Convert, cut and edit audio on macOS: Finder right-click conversion plus a waveform editor.",
+  "es": "Convierte, recorta y edita audio: conversión con clic derecho en el Finder y editor de forma de onda.",
+  "it": "Converte, taglia e modifica l'audio: conversione con clic destro nel Finder ed editor della forma d'onda."
+ },
+ "mDOWN": {
+  "fr": "Téléchargeur de médias léger avec un moteur yt-dlp qui se met à jour seul, un serveur MCP pour les IA et une extension Chromium.",
+  "en": "Light media downloader with a self-updating yt-dlp engine, MCP server and Chromium extension.",
+  "es": "Descargador de medios ligero con motor yt-dlp que se actualiza solo, servidor MCP para IA y extensión de Chromium.",
+  "it": "Downloader di media leggero con motore yt-dlp che si aggiorna da solo, server MCP per le IA ed estensione Chromium."
  }
 }
